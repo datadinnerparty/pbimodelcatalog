@@ -1,0 +1,235 @@
+/// Name of the Power BI workspace housing the published semantic model. Must be in full URI format:
+/// powerbi://api.powerbi.com/v1.0/myorg/<your workspace name>
+expression WorkspaceConnection = "powerbi://api.powerbi.com/v1.0/myorg/DIF%201%20LAB%20DEV" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b54b28af-ff06-4136-968e-e37fd886440d
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navigation
+
+/// Name of the Semantic Model
+expression SemanticModel = "Taxis 100m - Agg Tables" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 73c28ae3-da68-4d9b-90c9-82df67150084
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression fnCleanColumnNames = ```
+		/////////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Function:  fnCleanColumnNames
+		//
+		//
+		//created by : Andy Maser
+		//
+		//Description:
+		//This function makes mixed use source field names into human-readable, proper case filenames.
+		//  It accounts for the most common changes necessary, in most PowerBI transformations.
+		//  Note: This function relies on fnReplaceValues and fnAddSuffix (handled separately) to allow for any number
+		//        of replacements
+		//
+		// Usage:
+		//       #"CleanColumnNames" = fnCleanColumnNames(<previous step)
+		//
+		/////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//VERSION HISTORY
+		//
+		// 05-09-2023 - Initial creation/testing
+		// 05-10-2023 - Added separate function for multiple replace steps and accounted for multiple keyIndicators
+		// 05/12/2023 - Added prefix and suffix steps, and optional flag, whether or not to run it.
+		// 05/16/2023 - Fixed missing quote on line 39 & missing commas on 77 & 81 - PTurley
+		// 05/17/2023 - Added new helper function fnAddSuffix, and confrimed Paul's fixes.  
+		//              (not sure why the fnAddSuffix code doesn't work directly, but DOES in a function, but
+		//              at least it works)
+		//
+		//////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//TODO
+		//  1.) add flag to disable keyindicators, if not necessary
+		//
+		////////////////////////////////////////////////////////////////////////////////////////////
+		let
+		    Source = (Source) as table =>
+		let 
+		//Add a specific keywords that should not be converted. (i.e.: _SK, "_ID").
+		//  This will keep the underscores for values that typically aren't visible in PBI and are used for defining relationships.  
+		//  This means that existing relationships should not break (if they are based on a value that contains any of the keyIndicators
+		keyIndicators = {"_SK","_ID"},
+		
+		//define wheter or not a prefix should be added, and if so, what that prefix is.
+		//  prefix will be added to ALL columns.
+		preFixIndicator = 0,  //use 1 for yes, 0 for no prefix
+		preFixValue = "myprefix",  //enter your prefix value here. If prefixIndicator = 0, this value is not used.  Trailing spaces are not necessary
+		
+		//define whether or not a suffix should be added, and if so, what that suffix is.
+		//  suffix will be added to ALL columns.
+		suffixIndicator = 0, // use 1 for yes, 0 for no suffix
+		suffixValue = " mysuffix", //Enter your suffix value here. If suffixIndicator = 0, this value is not used.  Should include leading space
+		
+		//Begin Formatting
+		//Remove excess spaces
+		#"TrimSpaces" = Table.TransformColumnNames(Source,Text.Trim),
+		//Remove Underscores (Except for marked key Indicator)
+		#"RemoveUnderscores"= Table.TransformColumnNames(#"TrimSpaces", each if  List.Count(Splitter.SplitTextByAnyDelimiter(keyIndicators)(_))>1 then _ else Text.Replace(_, "_"," ") ),
+		//convert spaces to a temporary value.  This is code I found online, not 100% sure why this works, but it keeps fully capitalized words from being changed by Text.Proper
+		// #"ChangeSpaces" = Table.TransformColumnNames(#"RemoveUnderscores", each Replacer.ReplaceText(_, " ", " ZZZ ")),
+		// //separate the words by capital letters
+		// #"SplitCapitals" = Table.TransformColumnNames(#"ChangeSpaces", each Text.Combine(Splitter.SplitTextByPositions(Text.PositionOfAny(_, {"A".."Z"},2)) (_), " ")),
+		//capitalize first letter of each word
+		#"CapitalizeFirstLetter" = Table.TransformColumnNames(#"RemoveUnderscores",Text.Proper),
+		// //remove any temporary spaces done by split
+		// #"RemoveSpaces" = Table.TransformColumnNames(#"CapitalizeFirstLetter", each Text.Remove(_, {" "})),
+		// //split by change in case to separate words
+		// #"SeparateColumNames" = Table.TransformColumnNames(#"RemoveSpaces", each Text.Combine(Splitter.SplitTextByCharacterTransition({"a".."z"},{"A".."Z"}) (_)," ")),
+		// //replace the spaces taken out in line 31
+		// #"ReplaceSpaces" = Table.TransformColumnNames(#"SeparateColumNames", each Replacer.ReplaceText(_, "ZZZ", " ")),
+		//clean up any duplicate spaces caused by replace and/or split functions
+		#"CleanSpaces" = Table.TransformColumnNames(#"CapitalizeFirstLetter",each Replacer.ReplaceText(_, "  "," ")),
+		//add as many steps as needed here, keeping in mind to be aware of the previous step names
+		#"ReplaceText" = fnReplaceValues(#"CleanSpaces","test"," Test"),
+		//replace abbrevations/acronyms when found in the middle of the column name
+		//#"RemoveAbbrevMid" = fnReplaceValues(#"ReplaceText"," F "," Fiscal"),
+		//replace abbreviations/acronyms when found at the beginning of the column name
+		//#"RemoveAbbrevStart" = fnReplaceValues(#"RemoveAbbrevMid","F ","Fiscal "),
+		//replace abbreviations/acronyms when found at the end of the coumn name
+		//#"RemoveAbbrevEnd" = fnReplaceValues(#"RemoveAbbrevStart"," F"," Fiscal"),
+		
+		//add prefix to all columns
+		#"AddPrefix" = if preFixIndicator = 1 then Table.PrefixColumns(#"ReplaceText", preFixValue) else #"ReplaceText",
+		#"ReplacePeriods" = if preFixIndicator = 1 then fnReplaceValues(#"AddPrefix","."," ") else #"AddPrefix",
+		
+		//add suffix to all columns
+		#"AddSuffix" = if suffixIndicator = 1 then fnAddSuffix(#"ReplacePeriods", suffixValue) else  #"ReplacePeriods"
+		in 
+		
+		//BE SURE TO CHECK THE FINAL STEP NAME
+		  #"AddSuffix"
+		in
+		    Source
+		```
+	lineageTag: 8c29b1df-d000-49d3-a509-d68448b97288
+	queryGroup: Functions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression fnAddSuffix = ```
+		/////////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Function:  fnAddSuffix
+		//
+		//
+		//created by : Andy Maser
+		//
+		//Description:
+		//This function takes a source table (from previous step) and a text string, and adds the text string
+		//   as a suffix to each column. 
+		//  For some unknown reason, this code does not work when used directly in PQ, but has to be this separate function.
+		//
+		// Usage:
+		//       <step name> = fnAddSuffix(<previous step>, suffixValue)
+		//
+		/////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//VERSION HISTORY
+		//
+		// 05-09-2023 - Initial creation/testing
+		//
+		//////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//TODO
+		//  1.) 
+		//
+		////////////////////////////////////////////////////////////////////////////////////////////
+		let Multiple = (_Base as table, _Target as text) =>
+		
+		let
+		  #"AppendSuffix" = Table.TransformColumnNames(_Base, (columnName as text) as text => columnName & _Target)
+		in
+		  #"AppendSuffix"
+		
+		in
+		Multiple
+		```
+	lineageTag: e7595953-8d64-4afd-8e86-85e87a5682db
+	queryGroup: Functions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression fnReplaceValues = ```
+		/////////////////////////////////////////////////////////////////////////////////////////
+		//
+		// Function:  fnReplaceValues
+		//
+		//
+		// May 2023
+		//created by : Andy Maser
+		//
+		//Description:
+		//This function simply takes a source table (_Base), a Source TextValue (_Source) and a Target text
+		//  value (_Target,) looks through _Base and replaces all instances of _Source with _Target.
+		//  It is a sub function used in fnCleanColumnNames, but can also be used by itself.
+		//
+		// Usage:
+		//     #"ReplaceValues" = fnReplaceValues(<previous step>,<existing value>,<newvalue>)
+		//
+		/////////////////////////////////////////////////////////////////////////////////////////
+		//
+		//VERSION HISTORY
+		//
+		// 05-10-2023 - Initial Creation
+		//
+		//////////////////////////////////////////////////////////////////////////////////////////
+		let Multiple = (_Base as table, _Source as text, _Target as text) =>
+		
+		let 
+		  #"ReplaceColumnNames" = Table.TransformColumnNames(_Base, each Text.Replace(_, _Source, _Target))
+		
+		in 
+		  #"ReplaceColumnNames"
+		
+		in 
+		Multiple
+		```
+	lineageTag: 91b3d997-d455-40b9-a6f3-8dcca0ca873b
+	queryGroup: Functions
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression 'Calculation Groups' = ```
+		//
+		//Tables/Views used for Model Documentation
+		//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+		//March 2024
+		//This query pulls in all the relevant data about Calculation Groups found in the model, for auto-documentation.
+		// This query is only used to relate the calculation group to the item, it is not needed for display
+		//Typical implementation should not require very much modification of this query
+		
+		let
+		    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
+		    [Query="
+		      EVALUATE
+		  INFO.CalculationGroups()
+		  "]),
+		        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+		        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+		    #"Merged Queries" = Table.NestedJoin(#"Remove right brackets ]", {"TableID"}, Tables, {"ID"}, "Tables", JoinKind.LeftOuter),
+		    #"Expanded Tables" = Table.ExpandTableColumn(#"Merged Queries", "Tables", {"Table Name"}, {"Table Name"})
+		in
+		    #"Expanded Tables"
+		```
+	lineageTag: 580506b4-9f6b-4e28-be67-fef3bdc60e1e
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

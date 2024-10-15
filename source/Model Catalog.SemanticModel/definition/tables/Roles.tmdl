@@ -1,0 +1,82 @@
+table Roles
+	lineageTag: 21e8263f-711c-45c0-9130-a2bb8e3cc99c
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 61a58638-1b65-44bd-a6db-4bc274506182
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModelID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d592b68-e4bf-40a8-b855-d6f22fbd861a
+		summarizeBy: count
+		sourceColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Role Name'
+		dataType: string
+		lineageTag: 5f7c0e4b-7b0d-4e29-9d0d-e8066e879a0e
+		summarizeBy: none
+		sourceColumn: Role Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: a2c650c0-06e9-4b7e-b0f6-12e9e7376666
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModelPermission
+		dataType: int64
+		formatString: 0
+		lineageTag: 28f472d5-f007-4b07-baf7-a0a92deec1cb
+		summarizeBy: sum
+		sourceColumn: ModelPermission
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 92ab4928-da79-4ca2-aacb-e4b81ae36424
+		summarizeBy: none
+		sourceColumn: ModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Roles = m
+		mode: import
+		source = ```
+				//
+				//Tables/Views used for Model Documentation
+				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+				//March 2024
+				//This query pulls in all the relevant data about Roles found in the model, for auto-documentation
+				//Typical implementation should not require very much modification of this query
+				
+				let
+				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
+				    [Query="
+				      EVALUATE
+				  INFO.ROLES()
+				  "]),
+				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Role Name"}})
+				in
+				    #"Renamed Columns"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

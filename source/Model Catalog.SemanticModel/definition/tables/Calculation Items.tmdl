@@ -1,0 +1,127 @@
+table 'Calculation Items'
+	lineageTag: f36e5349-3787-4e71-a62a-4fa7cfd6250e
+
+	column 'Calculation Item Name'
+		dataType: string
+		lineageTag: a1c88ba5-df58-43bb-adb1-4f8b845914e2
+		summarizeBy: none
+		sourceColumn: Calculation Item Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 89b3df0e-dfd2-4293-9dbe-85169b11856a
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expression
+		dataType: string
+		lineageTag: d194a168-56b2-44f0-9cee-e726af92152c
+		summarizeBy: none
+		sourceColumn: Expression
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d0fce997-3b6b-4451-ae28-448361bd5660
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalculationGroupID
+		dataType: int64
+		formatString: 0
+		lineageTag: 50f7bfbb-ac91-40c1-b25e-fbba4a9f0408
+		summarizeBy: count
+		sourceColumn: CalculationGroupID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormatStringDefinitionID
+		dataType: int64
+		formatString: 0
+		lineageTag: 59130b6d-7d45-4d86-9b41-02bcad36997f
+		summarizeBy: count
+		sourceColumn: FormatStringDefinitionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 04bbc491-f6ea-43cb-8c45-20c6f2a9c350
+		summarizeBy: none
+		sourceColumn: ModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: int64
+		formatString: 0
+		lineageTag: d053baba-2177-4da2-bb5e-f4bfc1956c65
+		summarizeBy: sum
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column ErrorMessage
+		dataType: string
+		lineageTag: 08e0327f-0bbe-4c96-8c93-e967adf32c92
+		summarizeBy: none
+		sourceColumn: ErrorMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 641558fb-f74b-45aa-bd65-dd0e226fdde9
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calculation Group Name'
+		dataType: string
+		lineageTag: 76fb1220-a52e-46d6-9cfe-0c7ed4bd1fc7
+		summarizeBy: none
+		sourceColumn: Calculation Group Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Calculation Items' = m
+		mode: import
+		source = ```
+				//
+				//Tables/Views used for Model Documentation
+				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+				//March 2024
+				//This query pulls in all the relevant data about Calculation Items found in the model, for auto-documentation
+				//Typical implementation should not require very much modification of this query
+				
+				let
+				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
+				    [Query="
+				      EVALUATE
+				  INFO.CalculationItems()
+				  "]),
+				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Calculation Item Name"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"CalculationGroupID"}, #"Calculation Groups", {"ID"}, "Calculation Groups", JoinKind.LeftOuter),
+				    #"Expanded Calculation Groups" = Table.ExpandTableColumn(#"Merged Queries", "Calculation Groups", {"Table Name"}, {"Table Name"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Expanded Calculation Groups",{{"Table Name", "Calculation Group Name"}})
+				in
+				    #"Renamed Columns1"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

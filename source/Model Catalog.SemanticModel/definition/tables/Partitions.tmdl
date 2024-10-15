@@ -1,0 +1,326 @@
+table Partitions
+	isHidden
+	lineageTag: d632cf20-c5ac-428b-86c9-ca7ba0a45660
+
+	column ID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 83b56511-c4db-4d49-94f2-09b4718c3e76
+		summarizeBy: count
+		sourceColumn: ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TableID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f1776b22-26db-4f8c-aa0d-202594ef3ad1
+		summarizeBy: none
+		sourceColumn: TableID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Partition Name'
+		dataType: string
+		isHidden
+		lineageTag: e8f67b09-d8c9-4cbc-ad91-2463706a1264
+		summarizeBy: none
+		sourceColumn: Partition Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		isHidden
+		lineageTag: ed635106-8fb8-45a0-9c3a-b469f58a4888
+		summarizeBy: none
+		sourceColumn: Description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataSourceID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 34dfca0c-0266-4307-965d-d95d8c6832ed
+		summarizeBy: count
+		sourceColumn: DataSourceID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5ba8b190-f1f4-4343-bfe1-0ad7d1716888
+		summarizeBy: sum
+		sourceColumn: State
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c1a2739f-9ca0-4cd8-a1a5-d0a14465956b
+		summarizeBy: sum
+		sourceColumn: Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PartitionStorageID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 061a58da-907a-478c-b583-99b87b088f18
+		summarizeBy: count
+		sourceColumn: PartitionStorageID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mode
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: aacbf9f4-8d91-46df-a4e1-6ac70c059db8
+		summarizeBy: sum
+		sourceColumn: Mode
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataView
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4d0cd6f4-ca59-4b5f-a8ea-1ae747093454
+		summarizeBy: sum
+		sourceColumn: DataView
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedTime
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: c3c63d53-7173-421b-be41-4ec58fa48b4b
+		summarizeBy: none
+		sourceColumn: ModifiedTime
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RefreshedTime
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 60ede14a-b385-40eb-9450-325bec8145c4
+		summarizeBy: none
+		sourceColumn: RefreshedTime
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SystemFlags
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 87c3348c-c261-4e7f-8952-af9bfc1df4cb
+		summarizeBy: sum
+		sourceColumn: SystemFlags
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ErrorMessage
+		dataType: string
+		isHidden
+		lineageTag: 01b160b6-2ea9-4b69-96b2-e60dfde1eb2f
+		summarizeBy: none
+		sourceColumn: ErrorMessage
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RetainDataTillForceCalculate
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: caac05b5-41e6-47a0-930e-f0cf431a38fd
+		summarizeBy: none
+		sourceColumn: RetainDataTillForceCalculate
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangeStart
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 0685c3f3-ee7e-40e2-92ba-abc3bf7c8f5f
+		summarizeBy: none
+		sourceColumn: RangeStart
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangeEnd
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 81ba5429-74a0-4c88-86ef-8fc7ac3bbdb9
+		summarizeBy: none
+		sourceColumn: RangeEnd
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RangeGranularity
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c7370585-fc44-4071-8d8c-532c4b255b16
+		summarizeBy: sum
+		sourceColumn: RangeGranularity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column RefreshBookmark
+		dataType: string
+		isHidden
+		lineageTag: 430883be-206b-4289-ade4-30ef167debab
+		summarizeBy: none
+		sourceColumn: RefreshBookmark
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QueryGroupID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4122ea44-0c27-4688-b02b-c615f62cef26
+		summarizeBy: count
+		sourceColumn: QueryGroupID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExpressionSourceID
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 90d3bac3-c22f-4151-a541-7016789cc147
+		summarizeBy: count
+		sourceColumn: ExpressionSourceID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAttributes
+		dataType: string
+		isHidden
+		lineageTag: 171d02cb-9ae7-4dc7-91a4-ea26906eccff
+		summarizeBy: none
+		sourceColumn: MAttributes
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Table Name'
+		dataType: string
+		isHidden
+		lineageTag: bcd0aba2-1f7f-45f8-be7b-3b7622d31985
+		summarizeBy: none
+		sourceColumn: Table Name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: e97246ed-724f-4d77-b037-5a1ebd524cd5
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Partitions = m
+		mode: import
+		source = ```
+				//
+				//Tables/Views used for Model Documentation
+				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+				//March 2024
+				//This query pulls in all the relevant data about Partitions found in the model, for auto-documentation.
+				// This query is only used to collect the M query for each partition
+				
+				let
+				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
+				    [Query="
+				EVALUATE
+				VAR __partitions =
+				    INFO.PARTITIONS ()
+				VAR __refreshpolicies =
+				    SELECTCOLUMNS (
+				        INFO.REFRESHPOLICIES (),
+				        ""TableID"", [TableID],
+				        ""SourceExpression"", [SourceExpression]
+				    )
+				VAR __combined =
+				    NATURALLEFTOUTERJOIN ( __partitions, __refreshpolicies )
+				RETURN
+				    __combined
+				  "]),
+				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+				    #"Merged Queries" = Table.NestedJoin(#"Remove right brackets ]", {"TableID"}, Tables, {"ID"}, "Tables", JoinKind.LeftOuter),
+				    #"Expanded Tables" = Table.ExpandTableColumn(#"Merged Queries", "Tables", {"Table Name"}, {"Table Name"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Tables",{{"Name", "Partition Name"}}),
+				    #"Added Source column" = Table.AddColumn(#"Renamed Columns", "Source", each if [QueryDefinition] <> null and [QueryDefinition] <> "" then [QueryDefinition] else [SourceExpression]),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Source column",{"QueryDefinition", "SourceExpression"})
+				in
+				    #"Removed Columns"
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,24 @@
+{
+  "name": "Model Catalog",
+  "dataColors": [
+    "#4F4F4F",
+    "#B9B9B9",
+    "#C388FA",
+    "#888888",
+    "#000000",
+    "#A8CB7D",
+    "#52805B",
+    "#8B0000"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#070f25",
+  "tableAccent": "#0F1934",
+  "textClasses": {
+    "label": {
+      "fontSize": 11
+    },
+    "title": {
+      "fontFace": "'Segoe UI Bold', wf_segoe-ui_bold, helvetica, arial, sans-serif"
+    }
+  }
+}

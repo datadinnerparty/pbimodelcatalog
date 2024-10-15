@@ -1,0 +1,52 @@
+table _Measures
+	lineageTag: ac9f8480-1949-4c36-b27f-1505075e4e2e
+
+	measure 'From Table Color' =
+			
+			SWITCH (
+			    TRUE (),
+			    MAX(Relationships[From Table Type]) = "Fact", "#A6B916",   // If From Table Type is "Fact", assign color "#1D446B"
+			    MAX(Relationships[From Table Type]) = "Dimension", "#C8B78A",  // If From Table Name is "Dimension", assign color "#FE9666"
+			    TRUE(), "#A66999"  // If From Table Name is neither "Fact" nor "Dimension", assign color "#6C187E"
+			)
+		lineageTag: 20220593-acd0-4789-8bae-92b1410cc45f
+
+	measure 'To Table Color' =
+			
+			SWITCH (
+			    TRUE (),
+			    MAX(Relationships[To Table Type]) = "Fact", "#A6B916",   // If From Table Type is "Fact", assign color "#1D446B"
+			    MAX(Relationships[To Table Type]) = "Dimension", "#C8B78A",  // If From Table Name is "Dimension", assign color "#FE9666"
+			    TRUE(), "#A66999"  // If From Table Name is neither "Fact" nor "Dimension", assign color "#6C187E"
+			)
+		lineageTag: 1054fa31-072e-499d-b190-8613864b8868
+
+	measure 'Model Name' = MAX('Model'[Name])
+		lineageTag: f5329119-36ff-4fa2-b32f-5053dac8cbeb
+
+	column Measures
+		dataType: string
+		lineageTag: b7788fb4-fbba-4247-b660-30320e6a2c24
+		summarizeBy: none
+		sourceColumn: Measures
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				//
+				//Tables/Views used for Model Documentation
+				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+				//March 2024
+				//This query creates a table for local measures, used for custom visual formatting
+				//Typical implementation should not require very much modification of this query
+				
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Measures = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Measures", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

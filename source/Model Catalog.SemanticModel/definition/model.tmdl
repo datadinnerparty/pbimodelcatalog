@@ -1,0 +1,38 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup Parameters
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Functions
+
+	annotation PBI_QueryGroupOrder = 1
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.136.1478.0 (24.09)
+
+annotation PBI_QueryOrder = ["Relationships","Measure List","WorkspaceConnection","SemanticModel","fnCleanColumnNames","fnAddSuffix","fnReplaceValues","Tables","_Measures","Calculation Items","Calculation Groups","Columns","Hierarchies","Roles","Model","Partitions"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Measure List'
+ref table Tables
+ref table Relationships
+ref table _Measures
+ref table 'Calculation Items'
+ref table Columns
+ref table Hierarchies
+ref table Model
+ref table Partitions
+ref table Roles
+
+ref cultureInfo en-US
+

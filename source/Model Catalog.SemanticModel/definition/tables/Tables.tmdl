@@ -1,0 +1,231 @@
+table Tables
+	lineageTag: 37a345cd-09a6-4007-8933-3cfabafa52aa
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fc896f9-ce3f-4da6-9488-df74e52817a9
+		summarizeBy: none
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModelID
+		dataType: int64
+		formatString: 0
+		lineageTag: eeb87c9e-3b27-4732-83e7-5626dc2a9569
+		summarizeBy: count
+		sourceColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Table Name'
+		dataType: string
+		lineageTag: b5cbc4fe-408a-4529-8eda-40c04adacd23
+		summarizeBy: none
+		sourceColumn: Table Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCategory
+		dataType: string
+		lineageTag: ba8ea2b1-1fce-4c26-91ef-46e8828cd085
+		summarizeBy: none
+		sourceColumn: DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsHidden
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2afad93c-48d1-4904-8e70-6860da49af44
+		summarizeBy: none
+		sourceColumn: IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TableStorageID
+		dataType: int64
+		formatString: 0
+		lineageTag: fece4536-01ec-46c2-9d11-2c17bccbd3f5
+		summarizeBy: count
+		sourceColumn: TableStorageID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 356393c9-8320-4455-b27f-80e864f9d3c1
+		summarizeBy: none
+		sourceColumn: ModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column StructureModifiedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0ee0ecc9-24a1-4d17-997b-b9ec4c6e3fdc
+		summarizeBy: none
+		sourceColumn: StructureModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column SystemFlags
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a308ce8-08ae-4027-90a7-d872571bc1e5
+		summarizeBy: sum
+		sourceColumn: SystemFlags
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShowAsVariationsOnly
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f60140a1-3503-4b40-a46f-c88159f9e737
+		summarizeBy: none
+		sourceColumn: ShowAsVariationsOnly
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsPrivate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: bf2aec04-0d72-4b5d-896f-fa14542c6eaf
+		summarizeBy: none
+		sourceColumn: IsPrivate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DefaultDetailRowsDefinitionID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1fd539ba-ccb8-4325-b33e-933a23557f40
+		summarizeBy: count
+		sourceColumn: DefaultDetailRowsDefinitionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column AlternateSourcePrecedence
+		dataType: int64
+		formatString: 0
+		lineageTag: 45f589e7-3da6-48c8-8148-f94dec2de605
+		summarizeBy: sum
+		sourceColumn: AlternateSourcePrecedence
+
+		annotation SummarizationSetBy = Automatic
+
+	column RefreshPolicyID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d82924d-6b9b-4245-b8b3-43d63301d82c
+		summarizeBy: count
+		sourceColumn: RefreshPolicyID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalculationGroupID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f0928f7-3537-42fd-98ed-a306570eff01
+		summarizeBy: count
+		sourceColumn: CalculationGroupID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExcludeFromModelRefresh
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8d7d231e-aa84-453f-a10c-39d8410cd311
+		summarizeBy: none
+		sourceColumn: ExcludeFromModelRefresh
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineageTag
+		dataType: string
+		lineageTag: a10fda46-c422-48c5-9279-f4fdc7c84159
+		summarizeBy: none
+		sourceColumn: LineageTag
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceLineageTag
+		dataType: string
+		lineageTag: 2bc75264-d7ba-4eb5-8972-50398c980e89
+		summarizeBy: none
+		sourceColumn: SourceLineageTag
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: cdba7be7-720a-4842-b9b4-eeb298f99018
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Table Type'
+		dataType: string
+		lineageTag: 96977075-7c7c-4ad7-a85d-ab45ba635ec6
+		summarizeBy: none
+		sourceColumn: Table Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column StorageMode
+		dataType: string
+		lineageTag: 298ec982-e7d3-472d-907a-ffa55ea47263
+		summarizeBy: none
+		sourceColumn: StorageMode
+
+		annotation SummarizationSetBy = Automatic
+
+	column SystemManaged
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 66ead44e-d5be-4371-9e37-22f76b3cca36
+		summarizeBy: none
+		sourceColumn: SystemManaged
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Tables = m
+		mode: import
+		source =
+				//
+				//Tables/Views used for Model Documentation
+				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+				//March 2024
+				//This query pulls in all the relevant data about tables found in the model, for auto-documentation
+				//Typical implementation should not require very much modification of this query
+				
+				let
+				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel,
+				    [Query="
+				EVALUATE
+				VAR __tables =
+				    INFO.TABLES ()
+				VAR __storagemode =
+				    SELECTCOLUMNS ( INFO.VIEW.TABLES (), ""ID"", [ID], ""StorageMode"", [StorageMode] )
+				VAR __combined =
+				    NATURALLEFTOUTERJOIN ( __tables, __storagemode )
+				RETURN
+				    __combined
+				  "]),
+				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Table Name"}}),
+				    #"Add Table Type from hashtag" = Table.AddColumn(#"Renamed Columns", "Table Type", each Text.AfterDelimiter([Description], "%%"), type text),
+				    #"Removed Table Type from Description" = Table.AddColumn(#"Add Table Type from hashtag", "Description2", each Text.BeforeDelimiter([Description], "%%"), type text),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Table Type from Description",{"Description"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"Description2", "Description"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

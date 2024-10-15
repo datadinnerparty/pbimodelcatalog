@@ -1,0 +1,151 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 273,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 568,
+            "y": 93
+          },
+          "nodeIndex": "Measure List",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 8,
+            "y": 343
+          },
+          "nodeIndex": "Relationships",
+          "nodeLineageTag": "e218f2d8-6414-4488-b2c5-8cc1eda42038",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 306,
+            "y": 359
+          },
+          "nodeIndex": "Tables",
+          "nodeLineageTag": "37a345cd-09a6-4007-8933-3cfabafa52aa",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 129
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "ac9f8480-1949-4c36-b27f-1505075e4e2e",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 989,
+            "y": 352
+          },
+          "nodeIndex": "Calculation Items",
+          "nodeLineageTag": "f36e5349-3787-4e71-a62a-4fa7cfd6250e",
+          "size": {
+            "height": 276,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 218,
+            "y": 0
+          },
+          "nodeIndex": "Columns",
+          "nodeLineageTag": "1b2978f9-9bc8-4af0-ba56-809d7398973e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1265,
+            "y": 179.5
+          },
+          "nodeIndex": "Hierarchies",
+          "nodeLineageTag": "dc173271-df88-4ce2-a0a2-2348b13368c7",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1817,
+            "y": 179.5
+          },
+          "nodeIndex": "Model",
+          "nodeLineageTag": "f89580a3-729a-495a-9a9a-af252358493c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 650,
+            "y": 339.5
+          },
+          "nodeIndex": "Partitions",
+          "nodeLineageTag": "d632cf20-c5ac-428b-86c9-ca7ba0a45660",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2093,
+            "y": 217.5
+          },
+          "nodeIndex": "Roles",
+          "nodeLineageTag": "21e8263f-711c-45c0-9130-a2bb8e3cc99c",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

@@ -1,0 +1,255 @@
+table 'Measure List'
+	lineageTag: 8bb194de-ce1a-428c-8c04-f25e8835f99d
+
+	column Table
+		dataType: string
+		lineageTag: 9cff8921-262c-4892-9044-219098d6b6cf
+		summarizeBy: none
+		sourceColumn: Table
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6719619a-e3a0-4900-a5ba-bf777fc8ecd1
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TableID
+		dataType: int64
+		formatString: 0
+		lineageTag: 6bd8ef7b-dc67-42f3-92fe-9084feb76187
+		summarizeBy: count
+		sourceColumn: TableID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Name'
+		dataType: string
+		lineageTag: d98fc3af-b5ef-43ef-8e77-e3a7b5c85fde
+		summarizeBy: none
+		sourceColumn: Measure Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 1c3400ec-d61a-49da-9c12-79ff21f74fbf
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataType
+		dataType: int64
+		formatString: 0
+		lineageTag: 5301b399-e5b1-4c0f-99db-d26c2f9014fb
+		summarizeBy: sum
+		sourceColumn: DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Expression
+		dataType: string
+		lineageTag: 0879b70a-a7b3-4deb-a2f0-e317cc2e051d
+		summarizeBy: none
+		sourceColumn: Expression
+
+		annotation SummarizationSetBy = Automatic
+
+	column FormatString
+		dataType: string
+		lineageTag: 854532c5-cd58-4376-941f-3cc55fb9ef15
+		summarizeBy: none
+		sourceColumn: FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsHidden
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 15149706-d8fa-4edb-89e6-e91efb5ad7b4
+		summarizeBy: none
+		sourceColumn: IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: int64
+		formatString: 0
+		lineageTag: 9fc44f9b-3449-42bc-a56c-1de294fcc004
+		summarizeBy: sum
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a77d5f2e-f594-47a4-a4ba-d17e8a25bddb
+		summarizeBy: none
+		sourceColumn: ModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column StructureModifiedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c378d7b7-d060-4942-be01-e8484d67d3fd
+		summarizeBy: none
+		sourceColumn: StructureModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column KPIID
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e4ce8e8-379f-4f31-9426-1c83805fb0bc
+		summarizeBy: count
+		sourceColumn: KPIID
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsSimpleMeasure
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1bd33b90-a268-42dd-9bb5-3b4f5ada63fa
+		summarizeBy: none
+		sourceColumn: IsSimpleMeasure
+
+		annotation SummarizationSetBy = Automatic
+
+	column ErrorMessage
+		dataType: string
+		lineageTag: ef454b5d-7001-4d23-aa27-a427daadd51c
+		summarizeBy: none
+		sourceColumn: ErrorMessage
+
+		annotation SummarizationSetBy = Automatic
+
+	column DisplayFolder
+		dataType: string
+		lineageTag: 0170c506-d40d-49ad-9763-5ea91b970f43
+		summarizeBy: none
+		sourceColumn: DisplayFolder
+
+		annotation SummarizationSetBy = Automatic
+
+	column DetailRowsDefinitionID
+		dataType: int64
+		formatString: 0
+		lineageTag: f6fadddc-8d09-4d95-92f3-a3543bc2c646
+		summarizeBy: count
+		sourceColumn: DetailRowsDefinitionID
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataCategory
+		dataType: string
+		lineageTag: f82a8d5d-029d-460a-9464-5acfafff74c2
+		summarizeBy: none
+		sourceColumn: DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineageTag
+		dataType: string
+		lineageTag: 80fbeaa7-f18b-4de3-b2db-803ea272f65b
+		summarizeBy: none
+		sourceColumn: LineageTag
+
+		annotation SummarizationSetBy = Automatic
+
+	column SourceLineageTag
+		dataType: string
+		lineageTag: ee6931fd-87fd-4199-9e82-31b94d0437ee
+		summarizeBy: none
+		sourceColumn: SourceLineageTag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measure List' = m
+		mode: import
+		source = ```
+				//
+				//Tables/Views used for Model Documentation
+				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+				//March 2024
+				//This query pulls in all the relevant data about measures found in the model, for auto-documentation
+				//Typical implementation should not require very much modification of this query
+				
+				let
+				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, [Query="
+				    EVALUATE
+				VAR __measures =
+				    SELECTCOLUMNS (
+				        INFO.MEASURES (),
+				        ""ID"", [ID],
+				        ""TableID"", [TableID],
+				        ""Name"", [Name],
+				        ""Description"", [Description],
+				        ""DataType"", [DataType],
+				        ""Expression"", [Expression],
+				        ""FormatString"", [FormatString],
+				        ""IsHidden"", [IsHidden],
+				        ""State"", [State],
+				        ""ModifiedTime"", [ModifiedTime],
+				        ""StructureModifiedTime"", [StructureModifiedTime],
+				        ""KPIID"", [KPIID],
+				        ""IsSimpleMeasure"", [IsSimpleMeasure],
+				        ""ErrorMessage"", [ErrorMessage],
+				        ""DisplayFolder"", [DisplayFolder],
+				        ""DetailRowsDefinitionID"", [DetailRowsDefinitionID],
+				        ""DataCategory"", [DataCategory],
+				        //        ""FormatStringDefinitionID"", [FormatStringDefinitionID],         
+				        ""LineageTag"", [LineageTag],
+				        ""SourceLineageTag"", [SourceLineageTag]
+				    )
+				VAR __tables =
+				    SELECTCOLUMNS ( INFO.TABLES (), ""TableID"", [ID], ""Table"", [Name] )
+				VAR __combined =
+				    NATURALLEFTOUTERJOIN ( __measures, __tables )
+				RETURN
+				    SELECTCOLUMNS (
+				        __combined,
+				        ""Table"", [Table],
+				        ""ID"", [ID],
+				        ""TableID"", [TableID],
+				        ""Name"", [Name],
+				        ""Description"", [Description],
+				        ""DataType"", [DataType],
+				        ""Expression"", [Expression],
+				        ""FormatString"", [FormatString],
+				        ""IsHidden"", [IsHidden],
+				        ""State"", [State],
+				        ""ModifiedTime"", [ModifiedTime],
+				        ""StructureModifiedTime"", [StructureModifiedTime],
+				        ""KPIID"", [KPIID],
+				        ""IsSimpleMeasure"", [IsSimpleMeasure],
+				        ""ErrorMessage"", [ErrorMessage],
+				        ""DisplayFolder"", [DisplayFolder],
+				        ""DetailRowsDefinitionID"", [DetailRowsDefinitionID],
+				        ""DataCategory"", [DataCategory],
+				        //        ""FormatStringDefinitionID"", [FormatStringDefinitionID],         
+				        ""LineageTag"", [LineageTag],
+				        ""SourceLineageTag"", [SourceLineageTag]
+				    )
+				    "]),
+				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Measure Name"}})
+				in
+				    #"Renamed Columns"
+				
+				// References:
+				// https://dax.guide/info-measures/
+				// https://powerbi.microsoft.com/en-us/blog/dax-query-view-introduces-new-info-dax-functions/
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

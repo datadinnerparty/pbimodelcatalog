@@ -1,0 +1,290 @@
+table Relationships
+	lineageTag: e218f2d8-6414-4488-b2c5-8cc1eda42038
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5431575d-1b27-4fd6-8180-45e943047dc8
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModelID
+		dataType: int64
+		formatString: 0
+		lineageTag: a2ba1203-9348-47fb-bec9-592c2f1413bd
+		summarizeBy: count
+		sourceColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Measure Name'
+		dataType: string
+		lineageTag: ed7766ca-c60f-4d16-982b-e9fbb0580f87
+		summarizeBy: none
+		sourceColumn: Measure Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsActive
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e99fa407-115b-46af-99bd-cee1abf223a5
+		summarizeBy: none
+		sourceColumn: IsActive
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: int64
+		formatString: 0
+		lineageTag: 413b0b12-9ff9-431c-b857-e147f66c9abd
+		summarizeBy: sum
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column CrossFilteringBehavior
+		dataType: int64
+		formatString: 0
+		lineageTag: a865c862-f0db-4c1a-9e58-cb0a2d7998af
+		summarizeBy: sum
+		sourceColumn: CrossFilteringBehavior
+
+		annotation SummarizationSetBy = Automatic
+
+	column JoinOnDateBehavior
+		dataType: int64
+		formatString: 0
+		lineageTag: a75b3642-ca1e-4572-80fc-34832f10a365
+		summarizeBy: sum
+		sourceColumn: JoinOnDateBehavior
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelyOnReferentialIntegrity
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 102d4b95-56c0-4e4c-a7d3-0c86338ddbd3
+		summarizeBy: none
+		sourceColumn: RelyOnReferentialIntegrity
+
+		annotation SummarizationSetBy = Automatic
+
+	column FromTableID
+		dataType: int64
+		formatString: 0
+		lineageTag: 48c47b84-f192-41d8-8980-d6d90542c831
+		summarizeBy: count
+		sourceColumn: FromTableID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FromColumnID
+		dataType: int64
+		formatString: 0
+		lineageTag: ced276d3-9c40-42d1-b31f-7424d02a1639
+		summarizeBy: count
+		sourceColumn: FromColumnID
+
+		annotation SummarizationSetBy = Automatic
+
+	column FromCardinality
+		dataType: string
+		lineageTag: df130e19-fe11-49c2-8258-4d4ddc1a6240
+		summarizeBy: none
+		sourceColumn: FromCardinality
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToTableID
+		dataType: int64
+		formatString: 0
+		lineageTag: e60032b0-1544-4942-b7fb-a93813112559
+		summarizeBy: count
+		sourceColumn: ToTableID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToColumnID
+		dataType: int64
+		formatString: 0
+		lineageTag: 39ec4572-bb62-4c08-ad59-bf64f6c983dd
+		summarizeBy: count
+		sourceColumn: ToColumnID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToCardinality
+		dataType: string
+		lineageTag: 9983738f-d6c7-475a-ace5-52d6043fddfe
+		summarizeBy: none
+		sourceColumn: ToCardinality
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: int64
+		formatString: 0
+		lineageTag: 12d54872-2d83-464e-a29f-d4f0c7735667
+		summarizeBy: sum
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelationshipStorageID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5fc67bbf-c59c-49e3-89e2-8e7b7a1b4efb
+		summarizeBy: count
+		sourceColumn: RelationshipStorageID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RelationshipStorage2ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 607c06f1-1e32-4d95-8aff-e4315a6a37b8
+		summarizeBy: count
+		sourceColumn: RelationshipStorage2ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModifiedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8f746f5b-0658-4e05-9bd4-a47627e469c4
+		summarizeBy: none
+		sourceColumn: ModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column RefreshedTime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0f3533ba-65b1-4b09-b063-37e9aac3592d
+		summarizeBy: none
+		sourceColumn: RefreshedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column SecurityFilteringBehavior
+		dataType: int64
+		formatString: 0
+		lineageTag: b9687467-bac9-41d4-a130-102ab552349c
+		summarizeBy: sum
+		sourceColumn: SecurityFilteringBehavior
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'From Table Name'
+		dataType: string
+		lineageTag: 22dc7dbf-7a43-410c-b3a5-ff243701c9a6
+		summarizeBy: none
+		sourceColumn: From Table Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'To Table Name'
+		dataType: string
+		lineageTag: 047d3058-9afa-4532-a08c-c9d8508cba3e
+		summarizeBy: none
+		sourceColumn: To Table Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'From Column Name'
+		dataType: string
+		lineageTag: 2f312967-b7b5-43cb-b035-34ee14141b2b
+		summarizeBy: none
+		sourceColumn: From Column Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'To Column Name'
+		dataType: string
+		lineageTag: 7bc82af8-8663-41fc-9e50-c7575b647f18
+		summarizeBy: none
+		sourceColumn: To Column Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'From Table Type'
+		dataType: string
+		lineageTag: 87912722-dcee-4ab9-9893-cbd9cc567d7d
+		summarizeBy: none
+		sourceColumn: From Table Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'To Table Type'
+		dataType: string
+		lineageTag: 5d8d7054-489a-45a6-abd3-a2b17ada4595
+		summarizeBy: none
+		sourceColumn: To Table Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Relationships = m
+		mode: import
+		source = ```
+				//
+				//Tables/Views used for Model Documentation
+				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
+				//March 2024
+				//This query pulls in all the relevant data about relationships found in the model, for auto-documentation
+				//Typical implementation should not require very much modification of this query
+				
+				let
+				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
+				    [Query="
+				    EVALUATE
+				VAR __relationships =
+				    INFO.RELATIONSHIPS ()
+				VAR __fromtables =
+				    SELECTCOLUMNS ( INFO.TABLES (), ""FromTableID"", [ID], ""From Table Name"", [Name] )
+				VAR __addfromtables =
+				    NATURALLEFTOUTERJOIN ( __relationships, __fromtables )
+				VAR __totables =
+				    SELECTCOLUMNS ( INFO.TABLES (), ""ToTableID"", [ID], ""To Table Name"", [Name] )
+				VAR __addtotables =
+				    NATURALLEFTOUTERJOIN ( __addfromtables, __totables )
+				VAR __fromcolumns =
+				    SELECTCOLUMNS (
+				        INFO.COLUMNS (),
+				        ""FromColumnID"", [ID],
+				        ""From Column Name"", [ExplicitName]
+				    )
+				VAR __addfromcolumns =
+				    NATURALLEFTOUTERJOIN ( __addtotables, __fromcolumns )
+				VAR __tocolumns =
+				    SELECTCOLUMNS (
+				        INFO.COLUMNS (),
+				        ""ToColumnID"", [ID],
+				        ""To Column Name"", [ExplicitName]
+				    )
+				VAR __addtocolumns =
+				    NATURALLEFTOUTERJOIN ( __addfromcolumns, __tocolumns )
+				RETURN
+				    __addtocolumns"]),
+				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Measure Name"}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"FromTableID"}, Tables, {"ID"}, "Tables", JoinKind.LeftOuter),
+				    #"Expanded Tables" = Table.ExpandTableColumn(#"Merged Queries", "Tables", {"Table Type"}, {"Table Type"}),
+				    #"Renamed From Table Type" = Table.RenameColumns(#"Expanded Tables",{{"Table Type", "From Table Type"}}),
+				    #"Merged Queries - To Table" = Table.NestedJoin(#"Renamed From Table Type", {"ToTableID"}, Tables, {"ID"}, "Tables", JoinKind.LeftOuter),
+				    #"Expanded To Table" = Table.ExpandTableColumn(#"Merged Queries - To Table", "Tables", {"Table Type"}, {"Table Type"}),
+				    #"Renamed To Table Type" = Table.RenameColumns(#"Expanded To Table",{{"Table Type", "To Table Type"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed To Table Type",{{"ToCardinality", type text}, {"FromCardinality", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","2","Many",Replacer.ReplaceText,{"FromCardinality"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","2","Many",Replacer.ReplaceText,{"ToCardinality"})
+				in
+				    #"Replaced Value1"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

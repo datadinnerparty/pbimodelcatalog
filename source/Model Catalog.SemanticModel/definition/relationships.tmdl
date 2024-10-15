@@ -1,0 +1,8 @@
+relationship 373a74af-a7e0-4d5f-96d3-886c4ae1d6dd
+	fromColumn: Columns.'Table Name'
+	toColumn: Tables.'Table Name'
+
+relationship d8b7fd14-d26a-40c1-88f6-9d9ce36014d0
+	fromColumn: Partitions.TableID
+	toColumn: Tables.ID
+
