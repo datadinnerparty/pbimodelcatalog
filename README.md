@@ -5,6 +5,7 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 
 # Prerequisites
 * Your Power BI semantic model must be published in a Premium Power BI/Fabric workspace (P1/F64+ or PPU)
+* The XMLA endpoint must be enabled (Read only)
 * You must have a current version of Power BI Desktop
 
 # Which Files do I Need?
