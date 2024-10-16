@@ -1,7 +1,19 @@
 # What is the Power BI Model Catalog?
 
 The Model Catalog is a user-facing set of documentation derived from the metadata of a published Power BI model.
-The purpose is to drive self-service adoption of Power BI models by allowing end users to understand a semantic model, providing easy access to table and measure descriptions, formulas, relationships, and more
+
+The purpose is to drive self-service adoption of Power BI models by allowing end users to understand a semantic model, providing easy access to table and measure descriptions, formulas, relationships, and more.
+
+# Prerequisites
+
+* Your Power BI semantic model must be published in a Premium Power BI/Fabric workspace (P1/F64+ or PPU)
+* You must have a current version of Power BI Desktop
+
+# Which files do I need?
+
+To use the catalog with your own semantic model, just download this Power BI template file: [Model Catalog Template.pbit](Model%20Catalog%20Template.pbit)
+
+Open the template in Power BI Desktop, insert your workspace URL and semantic model name, and you will be in business.
 
 # What does the Model Catalog do?
 
