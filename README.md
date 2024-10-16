@@ -65,7 +65,17 @@ You can also use any additional types that you would like to use for filtering (
 
 The model catalog uses an Analysis Services connection, and is parameterized to make it easy to connect to any published Power BI model.
 
+![Parameters dialog](/images/pbitparameters.jpg)
+
 ![Parameters dialog](/images/parameters.jpg)
+
+To find your workspace connection, look under Workspace Settings --> License info in the Power BI service.
+
+![Workspace settings](/images/workspacesettings.jpg)
+
+You are connecting to a published Power BI model, so be sure to log in using your Microsoft account.
+
+![Microsoft account login option](/images/microsoftaccount.png)
 
 # Approve Native Database Queries
 
