@@ -11,9 +11,11 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 
 # Which files do I need?
 
-To use the catalog with your own semantic model, just download this Power BI template file: [Model Catalog Template.pbit](Model%20Catalog%20Template.pbit)
+The easiest way to use the catalog with your own semantic model, just download this Power BI template file: [Model Catalog Template.pbit](Model%20Catalog%20Template.pbit)
 
 Open the template in Power BI Desktop, insert your workspace URL and semantic model name, and you will be in business.
+
+If you want to download the PBIP file to contribute to this project, get the latest release here in GitHub.
 
 # What does the Model Catalog do?
 
