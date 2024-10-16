@@ -16857,6 +16857,27 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "relationships.relationshipdesc": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Relationships",
+			          "ConceptualProperty": "RelationshipDesc"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Relationship": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {

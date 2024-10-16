@@ -1,6 +1,6 @@
 /// Name of the Power BI workspace housing the published semantic model. Must be in full URI format:
 /// powerbi://api.powerbi.com/v1.0/myorg/<your workspace name>
-expression WorkspaceConnection = "powerbi://api.powerbi.com/v1.0/myorg/DIF%201%20LAB%20DEV" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression WorkspaceConnection = "powerbi://api.powerbi.com/v1.0/3cloudlab.onmicrosoft.com/DIF%201%20LAB%20DEV" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: b54b28af-ff06-4136-968e-e37fd886440d
 	queryGroup: Parameters
 

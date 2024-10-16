@@ -226,6 +226,14 @@ table Relationships
 
 		annotation SummarizationSetBy = Automatic
 
+	column RelationshipDesc
+		dataType: string
+		lineageTag: 01a66510-0bf0-4547-8cfd-1c1acde493ef
+		summarizeBy: none
+		sourceColumn: RelationshipDesc
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Relationships = m
 		mode: import
 		source = ```
@@ -240,8 +248,16 @@ table Relationships
 				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
 				    [Query="
 				    EVALUATE
-				VAR __relationships =
+				VAR __rel =
 				    INFO.RELATIONSHIPS ()
+				VAR __relview =
+				    SELECTCOLUMNS (
+				        INFO.VIEW.RELATIONSHIPS (),
+				        ""Name"", [Name],
+				        ""RelationshipDesc"", [Relationship]
+				    )
+				VAR __relationships =
+				    NATURALLEFTOUTERJOIN ( __rel, __relview )
 				VAR __fromtables =
 				    SELECTCOLUMNS ( INFO.TABLES (), ""FromTableID"", [ID], ""From Table Name"", [Name] )
 				VAR __addfromtables =
