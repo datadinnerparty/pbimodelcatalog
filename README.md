@@ -1,3 +1,5 @@
+# Goofy edit from Andrew Vassil. Bill me
+
 # What is the Power BI Model Catalog?
 The Model Catalog is a user-facing set of documentation derived from the metadata of a published Power BI model.
 
