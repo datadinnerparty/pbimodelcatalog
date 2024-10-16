@@ -22,7 +22,7 @@ If you want to download the PBIP file to contribute to this project, get the lat
 * Queries the metadata of a Power BI model published in a Premium or PPU workspace
 * Provides a templated, parameterized report for quick and easy deployment
 
-![image](https://github.com/user-attachments/assets/54042dd9-9fae-41f2-ae5f-bbe995921dd2)
+![Collage image of 10 pages from Model Catalog](https://github.com/user-attachments/assets/54042dd9-9fae-41f2-ae5f-bbe995921dd2)
 
 # Extracting Descriptions – Internal Model Documentation
 
