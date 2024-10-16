@@ -8,8 +8,7 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 * Queries the metadata of a Power BI model published in a Premium or PPU workspace
 * Provides a templated, parameterized report for quick and easy deployment
 
-
-![ModelCatalog](https://github.com/user-attachments/assets/58710981-dd70-4026-9ddb-24cf47c5d482)
+![image](https://github.com/user-attachments/assets/54042dd9-9fae-41f2-ae5f-bbe995921dd2)
 
 # Extracting Descriptions – Internal Model Documentation
 
