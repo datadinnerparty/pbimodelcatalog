@@ -13,7 +13,7 @@ The easiest way to use the catalog with your own semantic model is to download t
 
 Open the template in Power BI Desktop, insert your workspace URL and semantic model name, and you will be in business.
 
-If you want to contribute to this project, create a branch here in GitHub.
+If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
 # What does the Model Catalog Do?
 * Queries the metadata of a Power BI model published in a Premium or PPU workspace
