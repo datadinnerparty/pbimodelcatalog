@@ -56,6 +56,7 @@ You can also use any additional types that you would like to use for filtering (
 
 # Connecting the Catalog to Your Published Model
 The model catalog uses an Analysis Services connection, and is parameterized to make it easy to connect to any published Power BI model.
+Note: The Semantic Model parameter can be a comma-separated list of models within the same workspace.
 
 ![Parameters dialog](/images/pbitparameters.jpg)
 

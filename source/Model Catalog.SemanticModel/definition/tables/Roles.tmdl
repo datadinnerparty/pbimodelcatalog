@@ -2,19 +2,17 @@ table Roles
 	lineageTag: 21e8263f-711c-45c0-9130-a2bb8e3cc99c
 
 	column ID
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 61a58638-1b65-44bd-a6db-4bc274506182
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ID
 
 		annotation SummarizationSetBy = Automatic
 
 	column ModelID
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 9d592b68-e4bf-40a8-b855-d6f22fbd861a
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ModelID
 
 		annotation SummarizationSetBy = Automatic
@@ -36,20 +34,26 @@ table Roles
 		annotation SummarizationSetBy = Automatic
 
 	column ModelPermission
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 28f472d5-f007-4b07-baf7-a0a92deec1cb
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: ModelPermission
 
 		annotation SummarizationSetBy = Automatic
 
 	column ModifiedTime
-		dataType: dateTime
-		formatString: General Date
+		dataType: string
 		lineageTag: 92ab4928-da79-4ca2-aacb-e4b81ae36424
 		summarizeBy: none
 		sourceColumn: ModifiedTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanticModel
+		dataType: string
+		lineageTag: 3cbaa8ea-4765-453d-9468-16af58db17c1
+		summarizeBy: none
+		sourceColumn: SemanticModel
 
 		annotation SummarizationSetBy = Automatic
 
@@ -58,18 +62,26 @@ table Roles
 		source = ```
 				//
 				//Tables/Views used for Model Documentation
+				//Created by 3Cloud, LLC
 				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
 				//March 2024
 				//This query pulls in all the relevant data about Roles found in the model, for auto-documentation
 				//Typical implementation should not require very much modification of this query
 				
 				let
-				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
-				    [Query="
-				      EVALUATE
-				  INFO.ROLES()
-				  "]),
-				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				    Source = #table(type table[SemanticModel=text], { {SemanticModel} }),
+				     #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(Source, {{"SemanticModel", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "SemanticModel"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"SemanticModel", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"SemanticModel", Text.Trim, type text}}),
+				    #"Add Tables" = Table.AddColumn(#"Trimmed Text" , "sources" , each 
+				    let
+				        _t = AnalysisServices.Database( WorkspaceConnection, [SemanticModel], [Query="EVALUATE INFO.ROLES() "])
+				    in 
+				        _t
+				    ),
+				    #"Expanded sources" = Table.ExpandTableColumn(#"Add Tables", "sources", {"[ID]", "[ModelID]", "[Name]", "[Description]", "[ModelPermission]","[ModifiedTime]" },
+				 {"[ID]", "[ModelID]", "[Name]", "[Description]", "[ModelPermission]","[ModifiedTime]"  }),
+				        #"Remove left brackets [" = fnReplaceValues(#"Expanded sources", "[", ""),
 				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
 				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Role Name"}})
 				in

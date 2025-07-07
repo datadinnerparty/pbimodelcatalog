@@ -17,9 +17,9 @@ queryGroup Functions
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBIDesktopVersion = 2.136.1478.0 (24.09)
+annotation PBIDesktopVersion = 2.144.1378.0 (25.06)+cba1e61f16ea36d44901f06fa446299040122394
 
-annotation PBI_QueryOrder = ["Relationships","Measure List","WorkspaceConnection","SemanticModel","fnCleanColumnNames","fnAddSuffix","fnReplaceValues","Tables","_Measures","Calculation Items","Calculation Groups","Columns","Hierarchies","Roles","Model","Partitions"]
+annotation PBI_QueryOrder = ["Relationships","Measure List","WorkspaceConnection","SemanticModel","fnCleanColumnNames","fnAddSuffix","fnReplaceValues","Tables","_Measures","Calculation Items","Calculation Groups","Columns","Hierarchies","Roles","Model","Partitions","FactColor","DimensionColor","DefaultColor","Semantic Models"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -33,6 +33,7 @@ ref table Hierarchies
 ref table Model
 ref table Partitions
 ref table Roles
+ref table 'Semantic Models'
 
 ref cultureInfo en-US
 

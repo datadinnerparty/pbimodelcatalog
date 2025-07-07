@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 273,
+        "x": 0,
         "y": 0
       },
       "nodes": [
@@ -14,16 +14,17 @@
             "y": 93
           },
           "nodeIndex": "Measure List",
+          "nodeLineageTag": "8bb194de-ce1a-428c-8c04-f25e8835f99d",
           "size": {
-            "height": 176,
+            "height": 305.56829418127273,
             "width": 234
           },
           "zIndex": 1
         },
         {
           "location": {
-            "x": 8,
-            "y": 343
+            "x": 531.01348017074713,
+            "y": 747.50589402933917
           },
           "nodeIndex": "Relationships",
           "nodeLineageTag": "e218f2d8-6414-4488-b2c5-8cc1eda42038",
@@ -93,7 +94,7 @@
           "nodeIndex": "Hierarchies",
           "nodeLineageTag": "dc173271-df88-4ce2-a0a2-2348b13368c7",
           "size": {
-            "height": 300,
+            "height": 502.25294701466953,
             "width": 234
           },
           "zIndex": 0
@@ -113,8 +114,8 @@
         },
         {
           "location": {
-            "x": 650,
-            "y": 339.5
+            "x": 307.1180507641929,
+            "y": 807.20993997142341
           },
           "nodeIndex": "Partitions",
           "nodeLineageTag": "d632cf20-c5ac-428b-86c9-ca7ba0a45660",
@@ -132,14 +133,27 @@
           "nodeIndex": "Roles",
           "nodeLineageTag": "21e8263f-711c-45c0-9130-a2bb8e3cc99c",
           "size": {
-            "height": 224,
+            "height": 344.08768728996006,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 815.36410498164093,
+            "y": 831.94186129376021
+          },
+          "nodeIndex": "Semantic Models",
+          "nodeLineageTag": "8cc4c644-94e5-4666-ad4b-784b6e98942a",
+          "size": {
+            "height": 104,
             "width": 234
           },
           "zIndex": 0
         }
       ],
       "name": "All tables",
-      "zoomValue": 100,
+      "zoomValue": 63.287087723234038,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

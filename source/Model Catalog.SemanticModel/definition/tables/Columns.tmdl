@@ -2,37 +2,18 @@ table Columns
 	lineageTag: 1b2978f9-9bc8-4af0-ba56-809d7398973e
 
 	column ID
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: fc562dd2-17ae-46f2-85a3-c09d7f371e3e
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ID
 
 		annotation SummarizationSetBy = Automatic
 
 	column TableID
-		dataType: int64
-		formatString: 0
-		lineageTag: 03552b30-eda2-4a11-b7fa-a11350fa1eb3
-		summarizeBy: count
-		sourceColumn: TableID
-
-		annotation SummarizationSetBy = Automatic
-
-	column ExplicitDataType
-		dataType: int64
-		formatString: 0
-		lineageTag: 73100842-1ff5-48a6-81ea-0ef37d2a3998
-		summarizeBy: sum
-		sourceColumn: ExplicitDataType
-
-		annotation SummarizationSetBy = Automatic
-
-	column DataCategory
 		dataType: string
-		lineageTag: da01c541-69bb-43c2-aec0-6903256d8717
+		lineageTag: 03552b30-eda2-4a11-b7fa-a11350fa1eb3
 		summarizeBy: none
-		sourceColumn: DataCategory
+		sourceColumn: TableID
 
 		annotation SummarizationSetBy = Automatic
 
@@ -45,37 +26,18 @@ table Columns
 		annotation SummarizationSetBy = Automatic
 
 	column IsHidden
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
+		dataType: string
 		lineageTag: 3be5ca81-3299-4e9d-96e6-423849e9f3f1
 		summarizeBy: none
 		sourceColumn: IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
-	column SummarizeBy
-		dataType: int64
-		formatString: 0
-		lineageTag: 706385ed-7977-4a61-8c7f-1eb9ad825661
-		summarizeBy: sum
-		sourceColumn: SummarizeBy
-
-		annotation SummarizationSetBy = Automatic
-
-	column Type
-		dataType: int64
-		formatString: 0
-		lineageTag: 1f56bf9d-3bf1-4cdb-9a46-8e7595e00470
-		summarizeBy: sum
-		sourceColumn: Type
-
-		annotation SummarizationSetBy = Automatic
-
-	column SourceColumn
+	column 'Source Column'
 		dataType: string
 		lineageTag: b663156f-4513-4f66-9f48-e13287b45c36
 		summarizeBy: none
-		sourceColumn: SourceColumn
+		sourceColumn: Source Column
 
 		annotation SummarizationSetBy = Automatic
 
@@ -92,67 +54,6 @@ table Columns
 		lineageTag: 52f9dd06-c310-4167-b62a-d39c1889a18f
 		summarizeBy: none
 		sourceColumn: FormatString
-
-		annotation SummarizationSetBy = Automatic
-
-	column SortByColumnID
-		dataType: int64
-		formatString: 0
-		lineageTag: c7120691-ae61-430c-87c1-36e2d35a95c3
-		summarizeBy: count
-		sourceColumn: SortByColumnID
-
-		annotation SummarizationSetBy = Automatic
-
-	column AttributeHierarchyID
-		dataType: int64
-		formatString: 0
-		lineageTag: 43715c84-3a2e-403c-938c-1f44419a6bb7
-		summarizeBy: count
-		sourceColumn: AttributeHierarchyID
-
-		annotation SummarizationSetBy = Automatic
-
-	column ModifiedTime
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 1c8a308f-ca8d-4138-af95-346b129526a0
-		summarizeBy: none
-		sourceColumn: ModifiedTime
-
-		annotation SummarizationSetBy = Automatic
-
-	column StructureModifiedTime
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 0f950121-efce-46f9-8d0c-642ad1d0b15e
-		summarizeBy: none
-		sourceColumn: StructureModifiedTime
-
-		annotation SummarizationSetBy = Automatic
-
-	column RefreshedTime
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 99d48a1c-4bd9-4b1f-8167-f09ca00ba140
-		summarizeBy: none
-		sourceColumn: RefreshedTime
-
-		annotation SummarizationSetBy = Automatic
-
-	column DisplayFolder
-		dataType: string
-		lineageTag: 3b33807e-d046-4fa3-b568-cd6573e68df4
-		summarizeBy: none
-		sourceColumn: DisplayFolder
-
-		annotation SummarizationSetBy = Automatic
-
-	column LineageTag
-		dataType: string
-		lineageTag: 47039fe9-fd1c-4878-ad4c-96ad8416f99f
-		summarizeBy: none
-		sourceColumn: LineageTag
 
 		annotation SummarizationSetBy = Automatic
 
@@ -173,10 +74,8 @@ table Columns
 		annotation SummarizationSetBy = Automatic
 
 	column Description = IF([Column Type ] = "Standard" && [Raw Description] = "",[Column Name],[Raw Description])
-		dataType: string
 		lineageTag: 0a3e1470-5878-4e23-949c-3fed663b6600
 		summarizeBy: none
-		isDataTypeInferred
 
 		annotation SummarizationSetBy = Automatic
 
@@ -188,32 +87,57 @@ table Columns
 
 		annotation SummarizationSetBy = Automatic
 
+	column SemanticModel
+		dataType: string
+		lineageTag: 573e8e82-86ae-4119-81a4-30661777f2ca
+		summarizeBy: none
+		sourceColumn: SemanticModel
+
+		annotation SummarizationSetBy = Automatic
+
+	column CompoundKey
+		dataType: string
+		lineageTag: 82fe2e83-2ed8-4eed-9c55-2084f626f8cb
+		summarizeBy: none
+		sourceColumn: CompoundKey
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Columns = m
 		mode: import
 		source = ```
 				//
 				//Tables/Views used for Model Documentation
+				//Created by 3Cloud, LLC
 				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
 				//March 2024
 				//This query pulls in all the relevant data about Columns found in the model, for auto-documentation
 				//Typical implementation should not require very much modification of this query
 				
 				let
-				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
-				    [Query="
-				      EVALUATE
-				  INFO.Columns()
-				  "]),
-				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				    Source = #table(type table[SemanticModel=text], { {SemanticModel} }),
+				     #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(Source, {{"SemanticModel", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "SemanticModel"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"SemanticModel", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"SemanticModel", Text.Trim, type text}}),
+				    #"Add Tables" = Table.AddColumn(#"Trimmed Text" , "sources" , each 
+				    let
+				        _t = AnalysisServices.Database( WorkspaceConnection, [SemanticModel], [Query="EVALUATE INFO.Columns() "])
+				    in 
+				        _t
+				    ),
+				    #"Expanded sources" = Table.ExpandTableColumn(#"Add Tables", "sources", {"[ID]", "[FormatString]", "[ExplicitName]", "[IsHidden]", "[Description]","[TableID]","[Expression]","[SourceColumn]"},
+				 {"[ID]", "[FormatString]", "[ExplicitName]", "[IsHidden]", "[Description]","[TableID]","[Expression]","[SourceColumn]"}),
+				        #"Remove left brackets [" = fnReplaceValues(#"Expanded sources", "[", ""),
 				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
-				    #"Removed Columns" = Table.RemoveColumns(#"Remove right brackets ]",{ "InferredName", "InferredDataType", "State", "IsUnique", "IsKey", "IsNullable", "Alignment", "TableDetailPosition", "IsDefaultLabel", "IsDefaultImage", "ColumnStorageID", "ColumnOriginID", "IsAvailableInMDX", "SystemFlags", "KeepUniqueRows", "DisplayOrdinal", "ErrorMessage", "SourceProviderType", "EncodingHint", "RelatedColumnDetailsID", "AlternateOfID", "SourceLineageTag"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"ExplicitName", "Column Name"},{"Description","Raw Description"}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"ExplicitName", "Column Name"},{"Description","Raw Description"}}),
 				    #"Filtered Rows" = Table.SelectRows(#"Renamed Columns", each ([Column Name] <> "RowNumber-2662979B-1795-4F74-8F37-6A1BA8059B61")),
 				    #"Added Column Type" = Table.AddColumn(#"Filtered Rows", "Column Type ", each if [Expression] = null then "Standard" else "Calculated"),
-				    #"Merged Queries" = Table.NestedJoin(#"Added Column Type", {"TableID"}, Tables, {"ID"}, "Tables", JoinKind.LeftOuter),
-				    #"Expanded Tables" = Table.ExpandTableColumn(#"Merged Queries", "Tables", {"Table Name"}, {"Table Name"})
+				    #"Added Custom1" = Table.AddColumn(#"Added Column Type", "CompoundKey", each [SemanticModel] & Text.From([TableID])),
+				    #"Merged Queries" = Table.NestedJoin(#"Added Custom1", {"CompoundKey"}, Tables, {"CompoundKey"}, "Tables", JoinKind.LeftOuter),
+				    #"Expanded Tables" = Table.ExpandTableColumn(#"Merged Queries", "Tables", {"Table Name"}, {"Table Name"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Expanded Tables",{{"SourceColumn", "Source Column"}})
 				in
-				    #"Expanded Tables"
+				    #"Renamed Columns1"
 				```
 
 	annotation PBI_ResultType = Table
