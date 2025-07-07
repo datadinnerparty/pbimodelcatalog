@@ -208,6 +208,7 @@ expression fnReplaceValues = ```
 expression 'Calculation Groups' = ```
 		//
 		//Tables/Views used for Model Documentation
+		//Created by 3Cloud, LLC
 		//Initial Development: Dan Friedman, Rye Perez, Andy Maser
 		//March 2024
 		//This query pulls in all the relevant data about Calculation Groups found in the model, for auto-documentation.
@@ -215,14 +216,23 @@ expression 'Calculation Groups' = ```
 		//Typical implementation should not require very much modification of this query
 		
 		let
-		    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
-		    [Query="
-		      EVALUATE
-		  INFO.CalculationGroups()
-		  "]),
-		        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+		    Source = #table(type table[SemanticModel=text], { {SemanticModel} }),
+		     #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(Source, {{"SemanticModel", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "SemanticModel"),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"SemanticModel", type text}}),
+		    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"SemanticModel", Text.Trim, type text}}),
+		    #"Add Tables" = Table.AddColumn(#"Trimmed Text" , "sources" , each 
+		    let
+		        _t = AnalysisServices.Database( WorkspaceConnection, [SemanticModel], [Query="EVALUATE INFO.CalculatioNGroups() "])
+		    in 
+		        _t
+		    ),
+		    #"Expanded sources" = Table.ExpandTableColumn(#"Add Tables", "sources", {"[ID]", "[TableID]", "[Precedence]","[Description]",  "[ModifiedTime]"},
+		 {"[ID]", "[TableID]", "[Precedence]","[Description]",  "[ModifiedTime]"}),
+		 #"Remove left brackets [" = fnReplaceValues(#"Expanded sources", "[", ""),
 		        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
-		    #"Merged Queries" = Table.NestedJoin(#"Remove right brackets ]", {"TableID"}, Tables, {"ID"}, "Tables", JoinKind.LeftOuter),
+		    #"Added Custom" = Table.AddColumn(#"Remove right brackets ]", "CompoundKey", each [SemanticModel] & Text.From([TableID])),
+		
+		    #"Merged Queries" = Table.NestedJoin(#"Added Custom", {"CompoundKey"}, Tables, {"CompoundKey"}, "Tables", JoinKind.LeftOuter),
 		    #"Expanded Tables" = Table.ExpandTableColumn(#"Merged Queries", "Tables", {"Table Name"}, {"Table Name"})
 		in
 		    #"Expanded Tables"
@@ -232,4 +242,27 @@ expression 'Calculation Groups' = ```
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Table
+
+/// Color used for Fact tables in the Table Navigator
+expression FactColor = "#1D446B" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: ca96f94a-0b7b-4d66-b7a1-ec5c0e586571
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+/// Color used for Dimension tables in the Table Navigator
+expression DimensionColor = "#FE9666" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 44c19103-d17a-475a-ab86-0b97f8daa8ca
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+/// Color used for unlabeled tables in the Table Navigator
+expression DefaultColor = "#A66999" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 17ed1dd0-5043-4e6d-973f-08a46da62b99
+	queryGroup: Parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
 

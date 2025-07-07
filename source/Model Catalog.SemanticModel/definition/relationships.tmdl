@@ -1,8 +1,38 @@
-relationship 373a74af-a7e0-4d5f-96d3-886c4ae1d6dd
-	fromColumn: Columns.'Table Name'
-	toColumn: Tables.'Table Name'
+relationship 53238cb9-0aeb-6a60-b7e8-e4658fad4172
+	fromColumn: Partitions.CompoundKey
+	toColumn: Tables.CompoundKey
 
-relationship d8b7fd14-d26a-40c1-88f6-9d9ce36014d0
-	fromColumn: Partitions.TableID
-	toColumn: Tables.ID
+relationship d7333ad5-b124-3bca-5712-3e42f69664d6
+	fromColumn: Columns.CompoundKey
+	toColumn: Tables.CompoundKey
+
+relationship a6e30df2-8253-ca0e-ed6e-5d363c9a1545
+	fromColumn: Roles.SemanticModel
+	toColumn: 'Semantic Models'.'Semantic Model'
+
+relationship 228d309d-441b-1667-9353-9ce32baa5479
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Semantic Models'.'Semantic Model'
+	toColumn: Model.SemanticModel
+
+relationship d5a08d42-8903-3733-f40f-9d9d58ce35b9
+	fromColumn: Hierarchies.SemanticModel
+	toColumn: 'Semantic Models'.'Semantic Model'
+
+relationship 271fb294-f8bb-32e5-977d-865fc72906ce
+	fromColumn: 'Calculation Items'.SemanticModel
+	toColumn: 'Semantic Models'.'Semantic Model'
+
+relationship 5c8de954-53eb-ab95-c1c0-aea81fa0622b
+	fromColumn: 'Measure List'.SemanticModel
+	toColumn: 'Semantic Models'.'Semantic Model'
+
+relationship 6a7f3ce9-72b5-3e3d-e6fb-e89e6be52972
+	fromColumn: Tables.SemanticModel
+	toColumn: 'Semantic Models'.'Semantic Model'
+
+relationship 462f64f1-73ba-43fe-ea31-cf6b35f4d6aa
+	fromColumn: Relationships.SemanticModel
+	toColumn: 'Semantic Models'.'Semantic Model'
 

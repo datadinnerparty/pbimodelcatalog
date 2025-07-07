@@ -26,64 +26,26 @@ table 'Calculation Items'
 		annotation SummarizationSetBy = Automatic
 
 	column ID
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: d0fce997-3b6b-4451-ae28-448361bd5660
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ID
 
 		annotation SummarizationSetBy = Automatic
 
 	column CalculationGroupID
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 50f7bfbb-ac91-40c1-b25e-fbba4a9f0408
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: CalculationGroupID
 
 		annotation SummarizationSetBy = Automatic
 
 	column FormatStringDefinitionID
-		dataType: int64
-		formatString: 0
-		lineageTag: 59130b6d-7d45-4d86-9b41-02bcad36997f
-		summarizeBy: count
-		sourceColumn: FormatStringDefinitionID
-
-		annotation SummarizationSetBy = Automatic
-
-	column ModifiedTime
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 04bbc491-f6ea-43cb-8c45-20c6f2a9c350
-		summarizeBy: none
-		sourceColumn: ModifiedTime
-
-		annotation SummarizationSetBy = Automatic
-
-	column State
-		dataType: int64
-		formatString: 0
-		lineageTag: d053baba-2177-4da2-bb5e-f4bfc1956c65
-		summarizeBy: sum
-		sourceColumn: State
-
-		annotation SummarizationSetBy = Automatic
-
-	column ErrorMessage
 		dataType: string
-		lineageTag: 08e0327f-0bbe-4c96-8c93-e967adf32c92
+		lineageTag: 59130b6d-7d45-4d86-9b41-02bcad36997f
 		summarizeBy: none
-		sourceColumn: ErrorMessage
-
-		annotation SummarizationSetBy = Automatic
-
-	column Ordinal
-		dataType: int64
-		formatString: 0
-		lineageTag: 641558fb-f74b-45aa-bd65-dd0e226fdde9
-		summarizeBy: sum
-		sourceColumn: Ordinal
+		sourceColumn: FormatStringDefinitionID
 
 		annotation SummarizationSetBy = Automatic
 
@@ -95,23 +57,38 @@ table 'Calculation Items'
 
 		annotation SummarizationSetBy = Automatic
 
+	column SemanticModel
+		dataType: string
+		lineageTag: aa57add2-787d-4922-a259-662050825e48
+		summarizeBy: none
+		sourceColumn: SemanticModel
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Calculation Items' = m
 		mode: import
 		source = ```
 				//
 				//Tables/Views used for Model Documentation
+				//Created by 3Cloud, LLC
 				//Initial Development: Dan Friedman, Rye Perez, Andy Maser
 				//March 2024
 				//This query pulls in all the relevant data about Calculation Items found in the model, for auto-documentation
 				//Typical implementation should not require very much modification of this query
-				
 				let
-				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel, 
-				    [Query="
-				      EVALUATE
-				  INFO.CalculationItems()
-				  "]),
-				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				    Source = #table(type table[SemanticModel=text], { {SemanticModel} }),
+				     #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(Source, {{"SemanticModel", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "SemanticModel"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"SemanticModel", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"SemanticModel", Text.Trim, type text}}),
+				    #"Add Tables" = Table.AddColumn(#"Trimmed Text" , "sources" , each 
+				    let
+				        _t = AnalysisServices.Database( WorkspaceConnection, [SemanticModel], [Query="EVALUATE INFO.CalculationItems() "])
+				    in 
+				        _t
+				    ),
+				    #"Expanded sources" = Table.ExpandTableColumn(#"Add Tables", "sources", {"[ID]","[Name]","[CalculationGroupID]","[FormatStringDefinitionID]","[Description]","[Expression]"},
+				 {"[ID]","[Name]","[CalculationGroupID]","[FormatStringDefinitionID]","[Description]","[Expression]"}),
+				        #"Remove left brackets [" = fnReplaceValues(#"Expanded sources", "[", ""),
 				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
 				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Calculation Item Name"}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Renamed Columns", {"CalculationGroupID"}, #"Calculation Groups", {"ID"}, "Calculation Groups", JoinKind.LeftOuter),

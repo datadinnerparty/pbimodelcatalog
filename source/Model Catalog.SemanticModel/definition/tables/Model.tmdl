@@ -2,19 +2,18 @@ table Model
 	lineageTag: f89580a3-729a-495a-9a9a-af252358493c
 
 	column ID
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 3cf1580e-72fb-4e29-8979-93cebe1b2015
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: ID
 
 		annotation SummarizationSetBy = Automatic
 
-	column Name
+	column 'Model Name'
 		dataType: string
 		lineageTag: d0a0f2a3-0022-480e-b65d-0eab259fd5bb
 		summarizeBy: none
-		sourceColumn: Name
+		sourceColumn: Model Name
 
 		annotation SummarizationSetBy = Automatic
 
@@ -35,19 +34,17 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column DefaultMode
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 803e46e0-e49c-4ade-b19a-7b6ac3033aa7
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DefaultMode
 
 		annotation SummarizationSetBy = Automatic
 
 	column DefaultDataView
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: eb680f7f-138d-490c-9d6e-83f1c484fe83
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DefaultDataView
 
 		annotation SummarizationSetBy = Automatic
@@ -69,8 +66,7 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column ModifiedTime
-		dataType: dateTime
-		formatString: General Date
+		dataType: string
 		lineageTag: 9e03548b-7900-4b7b-bd30-cfe980b8c8cd
 		summarizeBy: none
 		sourceColumn: ModifiedTime
@@ -78,8 +74,7 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column StructureModifiedTime
-		dataType: dateTime
-		formatString: General Date
+		dataType: string
 		lineageTag: 69ddf397-ac5e-408e-a62d-7fea8bb2cd59
 		summarizeBy: none
 		sourceColumn: StructureModifiedTime
@@ -87,10 +82,9 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column Version
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 51fbce0f-d516-4358-b9ca-4423d4eae4e8
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Version
 
 		annotation SummarizationSetBy = Automatic
@@ -104,26 +98,23 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column DefaultMeasureID
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 052e4685-b752-4c3a-98ae-8bc5bb44886d
-		summarizeBy: count
+		summarizeBy: none
 		sourceColumn: DefaultMeasureID
 
 		annotation SummarizationSetBy = Automatic
 
 	column DefaultPowerBIDataSourceVersion
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 1438064d-f39e-415b-9048-7d414d67d793
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DefaultPowerBIDataSourceVersion
 
 		annotation SummarizationSetBy = Automatic
 
 	column ForceUniqueNames
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
+		dataType: string
 		lineageTag: 383c17b0-a2c0-4215-a88a-4b5e723f0b76
 		summarizeBy: none
 		sourceColumn: ForceUniqueNames
@@ -131,8 +122,7 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column DiscourageImplicitMeasures
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
+		dataType: string
 		lineageTag: 094eeb1a-6bc0-44f0-ad29-91203809473a
 		summarizeBy: none
 		sourceColumn: DiscourageImplicitMeasures
@@ -140,19 +130,17 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column DataSourceVariablesOverrideBehavior
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: 344c64c0-7a64-4c2e-a2a7-1b849cc75f0f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DataSourceVariablesOverrideBehavior
 
 		annotation SummarizationSetBy = Automatic
 
 	column DataSourceDefaultMaxConnections
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: f15fb9e6-bf85-4997-8a84-550ffdb7ba9b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DataSourceDefaultMaxConnections
 
 		annotation SummarizationSetBy = Automatic
@@ -165,17 +153,8 @@ table Model
 
 		annotation SummarizationSetBy = Automatic
 
-	column MAttributes
-		dataType: string
-		lineageTag: 936e225c-32a2-40f4-accf-6a95ea5167e8
-		summarizeBy: none
-		sourceColumn: MAttributes
-
-		annotation SummarizationSetBy = Automatic
-
 	column DiscourageCompositeModels
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
+		dataType: string
 		lineageTag: 0255f63a-e577-413e-bf5e-913cfbfbcab9
 		summarizeBy: none
 		sourceColumn: DiscourageCompositeModels
@@ -191,26 +170,99 @@ table Model
 		annotation SummarizationSetBy = Automatic
 
 	column DisableAutoExists
-		dataType: int64
-		formatString: 0
+		dataType: string
 		lineageTag: c3a21c46-e946-4994-9f3c-4db2d3039664
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: DisableAutoExists
+
+		annotation SummarizationSetBy = Automatic
+
+	column SemanticModel
+		dataType: string
+		lineageTag: 767c9ce8-68a0-471f-8fbd-9022eda16dae
+		summarizeBy: none
+		sourceColumn: SemanticModel
+
+		annotation SummarizationSetBy = Automatic
+
+	column ModelID
+		dataType: string
+		lineageTag: b8ab4e42-7766-46da-9c91-3fb7c9a5b656
+		summarizeBy: none
+		sourceColumn: ModelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mattributes
+		dataType: string
+		lineageTag: af8c6927-e76b-4a1c-9af0-c3be0d43f73a
+		summarizeBy: none
+		sourceColumn: Mattributes
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxParallelismPerRefresh
+		dataType: string
+		lineageTag: cfdabee1-c388-4bc4-b8c5-f18922ec559d
+		summarizeBy: none
+		sourceColumn: MaxParallelismPerRefresh
+
+		annotation SummarizationSetBy = Automatic
+
+	column MaxparallelismPerQuery
+		dataType: string
+		lineageTag: 3011ad51-e677-4ca8-997d-3da02aa31d0c
+		summarizeBy: none
+		sourceColumn: MaxparallelismPerQuery
 
 		annotation SummarizationSetBy = Automatic
 
 	partition Model = m
 		mode: import
-		source =
+		source = ```
+				//let
+				//    Source = AnalysisServices.Database(WorkspaceConnection, Parameter1,
+				//   [Query="
+				//      EVALUATE INFO.MODEL()
+				//  "]),
+				//        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
+				//        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", "")
+				//in
+				//    #"Remove right brackets ]"
+				
 				let
-				    Source = AnalysisServices.Database(WorkspaceConnection, SemanticModel,
-				    [Query="
-				      EVALUATE INFO.MODEL()
-				  "]),
-				        #"Remove left brackets [" = fnReplaceValues(Source, "[", ""),
-				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", "")
+				    Source = #table(type table[SemanticModel=text], { {SemanticModel} }),
+				     #"Split Column by Delimiter" = Table.ExpandListColumn(Table.TransformColumns(Source, {{"SemanticModel", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), let itemType = (type nullable text) meta [Serialized.Text = true] in type {itemType}}}), "SemanticModel"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Split Column by Delimiter",{{"SemanticModel", type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"SemanticModel", Text.Trim, type text}}),
+				    #"Add Tables" = Table.AddColumn(#"Trimmed Text" , "sources" , each 
+				    let
+				        _t = AnalysisServices.Database( WorkspaceConnection, [SemanticModel], [Query="EVALUATE INFO.MODEL() "])
+				    in 
+				       _t
+				    ),
+				    #"Expanded sources" = Table.ExpandTableColumn(#"Add Tables", "sources", {"[ID]", "[ModelID]", "[Name]", "[StorageLocation]", "[Description]", "[DefaultMode]",
+				                                                                            "[DefaultDataView]", "[ModifiedTime]", "[StructureModifiedTime]", "[Culture]", "[Collation]", "[Version]", 
+				                                                                            "[DataAccessOptions]", "[DefaultMeasureID]", "[DefaultPowerBIDataSourceVersion]", "[ForceUniqueNames]", "[DiscourageImplicitMeasures]", 
+				                                                                            "[DataSourceVariablesOverrideBehavior]", "[DataSourceDefaultMaxConnections]", "[SourceQueryCulture]","[Mattributes]","[DiscourageCompositeModels]",
+				                                                                            "[AutomaticAggregationOptions]","[DisableAutoExists]","[MaxParallelismPerRefresh]","[MaxparallelismPerQuery]"},
+				
+				                                                                             {"[ID]", "[ModelID]", "[Name]", "[StorageLocation]", "[Description]", "[DefaultMode]",
+				                                                                            "[DefaultDataView]", "[ModifiedTime]", "[StructureModifiedTime]", "[Culture]", "[Collation]", "[Version]", 
+				                                                                            "[DataAccessOptions]", "[DefaultMeasureID]", "[DefaultPowerBIDataSourceVersion]", "[ForceUniqueNames]", "[DiscourageImplicitMeasures]", 
+				                                                                            "[DataSourceVariablesOverrideBehavior]", "[DataSourceDefaultMaxConnections]", "[SourceQueryCulture]","[Mattributes]","[DiscourageCompositeModels]",
+				                                                                            "[AutomaticAggregationOptions]","[DisableAutoExists]","[MaxParallelismPerRefresh]","[MaxparallelismPerQuery]"
+				                                                                               } ),
+				        #"Remove left brackets [" = fnReplaceValues(#"Expanded sources", "[", ""),
+				        #"Remove right brackets ]" = fnReplaceValues(#"Remove left brackets [", "]", ""),
+				    #"Renamed Columns" = Table.RenameColumns(#"Remove right brackets ]",{{"Name", "Model Name"}})
+				    //#"Add Table Type from hashtag" = Table.AddColumn(#"Renamed Columns", "Table Type", each Text.AfterDelimiter([Description], "%%"), type text),
+				    //#"Removed Table Type from Description" = Table.AddColumn(#"Add Table Type from hashtag", "Description2", each Text.BeforeDelimiter([Description], "%%"), type text),
+				    //#"Removed Columns" = Table.RemoveColumns(#"Removed Table Type from Description",{"Description"}),
+				    //#"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"Description2", "Description"}})
 				in
-				    #"Remove right brackets ]"
+				    #"Renamed Columns"
+				```
 
 	annotation PBI_ResultType = Table
 
