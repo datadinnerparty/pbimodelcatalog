@@ -8,7 +8,7 @@ expression WorkspaceConnection = "powerbi://api.powerbi.com/v1.0/3cloudlab.onmic
 
 	annotation PBI_NavigationStepName = Navigation
 
-/// Name of the Semantic Model
+/// Name of the Semantic Model(s) in a workspace.  Comma Separated
 expression SemanticModel = "Taxis 100m - Agg Tables" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: 73c28ae3-da68-4d9b-90c9-82df67150084
 	queryGroup: Parameters
