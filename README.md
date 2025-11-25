@@ -7,11 +7,16 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 * Your Power BI semantic model must be published in a Premium Power BI/Fabric workspace (P1/F64+ or PPU)
 * The XMLA endpoint must be enabled (Read only)
 * You must have a current version of Power BI Desktop
+Note: If you use the MultiModel_SingleWorkspace or MultiModel_MultiWorkspace versions, you MUST set the option to ignore sensitivity labels.  (Only for this particular documentation model, you do NOT need to disable this across your tenant.)
 
 # Which Files do I Need?
-The easiest way to use the catalog with your own semantic model is to download this Power BI template file: [Model Catalog Template.pbit](Model%20Catalog%20Template.pbit)
+The easiest way to use the catalog with your own semantic model is to download this Power BI template file: 
+There are 3 different files, depending on your situation:
+[SingleModel.pbit](SingleModel.pbit) - this takes paramters for a single workspace, and single model.
+[MultiModel_SingleWorkspace.pbit](MultiModel_SingleWorkspace.pbit) - this takes paramters for a single workspace, and a comma-separates list of models.
+[MultiModel_MultiWorkspace.pbit](MultiModel_MultiWorkspace.pbit) - this requires the user to manually enter a table, that has records for worksapce and model name, one per row.  
 
-Open the template in Power BI Desktop, insert your workspace URL and semantic model name, and you will be in business.
+Open the template in Power BI Desktop, update workspace(s) and model(s), and you will be in business.
 
 If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
@@ -80,7 +85,7 @@ Alternatively, you can temporarily disable Power BI Desktop's requirement for ap
 ![Security option](/images/securityoption.jpg)
 
 # Refreshing a published Model Catalog
-Like any other Power BI model, the Model Catalog will only refresh when a schedule has been set up in the service or it is triggered manually or through the API. When setting up a refresh schedule, use oAuth credentials to connect to the data source (the target published model).
+The SingleModel version of the Model Catalog will only refresh when a schedule has been set up in the service or it is triggered manually or through the API. When setting up a refresh schedule, use oAuth credentials to connect to the data source (the target published model).
+Both of the MultiModel options will not auto refresh (at the current time.)  To refresh them, you must download the file, refresh it locally, and republish.  This is becuase of the way PowerBI validates connections for PowerQuery.
 
-# Rinse and Repeat
-To create a Model Catalog for another semantic model, simply reopen the Power BI template (PBIT) file and enter the connection string and name of the new model.
+
