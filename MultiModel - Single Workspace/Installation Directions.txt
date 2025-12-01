@@ -1,0 +1,11 @@
+Installation Directions
+
+For Single Model use, download the SingleModel.pbit file to your local machine.
+Open it in PBI Desktop.
+It will ask for 2 parameter values:
+	1) Workspace - the workspace name. (Note, this must be the full workspace name, [i.e.: powerbi://api.powerbi.com/v1.0/myorg/<your workspace name>])
+	2) Semantic Model - a comma-separated list of model names, as they appear in the PBI Service.  These models MUST all be in the same workspace, named in the above step.
+Once the file opens, it should refresh itself with the data from the specified model.  If it doesn't, you can trigger the refresh from with in PBI Desktop
+Publish the model, using a helpful name into your desired workspace.
+
+Note, This option will not allow scheduled refresh, as it contains a dynamic data connection.  To refresh this model, a user MUST download it to desktop, refresh it locally, and republish.

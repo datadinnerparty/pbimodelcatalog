@@ -1,0 +1,12 @@
+Installation Directions
+
+For MultiModel, Multile Workspace use, download the MultiModel_MultipleWorkspace.pbit file to your local machine.
+Open it in PBI Desktop.
+Once the file opens, open the Transform Data window.
+Find the table called Semantic Models
+Edit this table, so that the workspace(s) and model(s) are populated with your desired models.
+Close and Apply the new table. It should refresh itself
+Publish the model, using a helpful name into your desired workspace.
+
+
+Note, This option will not allow scheduled refresh, as it contains a dynamic data connection.  To refresh this model, a user MUST download it to desktop, refresh it locally, and republish.
