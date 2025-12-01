@@ -7,6 +7,7 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 * Your Power BI semantic model must be published in a Premium Power BI/Fabric workspace (P1/F64+ or PPU)
 * The XMLA endpoint must be enabled (Read only)
 * You must have a current version of Power BI Desktop
+Note: If you use the MultiModel_SingleWorkspace or MultiModel_MultiWorkspace versions, you MUST set the option to ignore sensitivity labels.  (Only for this particular documentation model, you do NOT need to disable this across your tenant.)
 
 # Which Files do I Need?
 There are 4 different options for this, each in its' own folder.  Open the folder for your desired situation, and follow the installation directions there.
@@ -80,7 +81,7 @@ Alternatively, you can temporarily disable Power BI Desktop's requirement for ap
 ![Security option](/images/securityoption.jpg)
 
 # Refreshing a published Model Catalog
-Like any other Power BI model, the Model Catalog will only refresh when a schedule has been set up in the service or it is triggered manually or through the API. When setting up a refresh schedule, use oAuth credentials to connect to the data source (the target published model).
+The SingleModel version of the Model Catalog will only refresh when a schedule has been set up in the service or it is triggered manually or through the API. When setting up a refresh schedule, use oAuth credentials to connect to the data source (the target published model).
+Both of the MultiModel options will not auto refresh (at the current time.)  To refresh them, you must download the file, refresh it locally, and republish.  This is becuase of the way PowerBI validates connections for PowerQuery.
 
-# Rinse and Repeat
-To create a Model Catalog for another semantic model, simply reopen the Power BI template (PBIT) file and enter the connection string and name of the new model.
+
