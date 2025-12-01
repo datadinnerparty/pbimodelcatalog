@@ -10,13 +10,8 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 Note: If you use the MultiModel_SingleWorkspace or MultiModel_MultiWorkspace versions, you MUST set the option to ignore sensitivity labels.  (Only for this particular documentation model, you do NOT need to disable this across your tenant.)
 
 # Which Files do I Need?
-The easiest way to use the catalog with your own semantic model is to download this Power BI template file: 
-There are 3 different files, depending on your situation:
-[SingleModel.pbit](SingleModel.pbit) - this takes paramters for a single workspace, and single model.
-[MultiModel_SingleWorkspace.pbit](MultiModel_SingleWorkspace.pbit) - this takes paramters for a single workspace, and a comma-separates list of models.
-[MultiModel_MultiWorkspace.pbit](MultiModel_MultiWorkspace.pbit) - this requires the user to manually enter a table, that has records for worksapce and model name, one per row.  
+There are 4 different options for this, each in its' own folder.  Open the folder for your desired situation, and follow the installation directions there.
 
-Open the template in Power BI Desktop, update workspace(s) and model(s), and you will be in business.
 
 If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
@@ -43,6 +38,7 @@ Note that measure descriptions can now be created with Copilot (preview feature)
 * Relationships
 * Calculation Groups and Calculation Items
 * Security Roles
+* Expressions
 
 # Adding Hidden Descriptions
 As of October 2024, the model name, model description, and calculation item descriptions can't be modified directly in Power BI Desktop. They can be updated very easily through Tabular Editor, though. 

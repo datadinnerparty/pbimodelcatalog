@@ -1,0 +1,21 @@
+Installation Directions
+
+For using a Fabric Notebook, along with a Lakehouse and Semantic Model, download the Lakehouse_Import.pbit file to your local machine
+Download the nb_ModelDocumentation.jpynb notebook
+If not already available, create a Fabric-enabled workspace
+Upload the notebook into this workspace.
+Open the notebook in the Fabric UI in the browser, and edit the variable names in the section called MANUAL CONFIG HERE in the first cell
+You can specify lakehouse names, workspace names, and colors to use for the Relationship Navigator (you do not need to change these colors, unless you want to)
+In addition, specify the workspaces and model names into the 'data' array.  These workspace names and model names MUST line up (i.e.: the third model name must exist in the third workspace)
+
+Note: if you already have a lakehouse, you can enter it here. If it doesn't exist, it will be created for you.  Note that schema-enabled lakehouses MUST be created by hand prior to running the notebook
+
+Note: the notebook and lakehouse MUST be in the same Fabric Workspace
+
+Execute the notebook.  The necessary tables/objects will be created (if not already) and populated with the data from the specified workspace(s) and model(s)
+Open the Lakehouse_Import.pbit file in PBI Desktop.
+Enter the Lakehouse name into the parameters.
+Publish the model, using a helpful name into your desired workspace.
+
+
+Note: because this option uses a notebook and lakehouse, the notebook can be scheduled to auto refresh on any desired schedule, and the import model can also be refreshed, as normal for a PBI report
