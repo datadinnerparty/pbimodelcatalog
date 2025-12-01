@@ -9,9 +9,8 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 * You must have a current version of Power BI Desktop
 
 # Which Files do I Need?
-The easiest way to use the catalog with your own semantic model is to download this Power BI template file: [Model Catalog Template.pbit](Model%20Catalog%20Template.pbit)
+There are 4 different options for this, each in its' own folder.  Open the folder for your desired situation, and follow the installation directions there.
 
-Open the template in Power BI Desktop, insert your workspace URL and semantic model name, and you will be in business.
 
 If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
@@ -38,6 +37,7 @@ Note that measure descriptions can now be created with Copilot (preview feature)
 * Relationships
 * Calculation Groups and Calculation Items
 * Security Roles
+* Expressions
 
 # Adding Hidden Descriptions
 As of October 2024, the model name, model description, and calculation item descriptions can't be modified directly in Power BI Desktop. They can be updated very easily through Tabular Editor, though. 
