@@ -1,0 +1,14 @@
+Note: This template will not allow a scheduled refresh in the PowerBI Service (Due to a limitation in the service)
+You MUST refresh this document in PBI Desktop and republish to pick up updates.
+
+Directions:
+1) Open the pbit template file in PBI Desktop.
+2) When prompted, enter the workspace (note, must be full workspace name, i.e.: powerbi://api.powerbi.com/v1.0/myorg/<your workspace name> )
+3) at the next prompt, enter a comma-separates list of model names to be documented.  All models MUST be in the same workspace (entered above)
+4) Refresh the model (just to be sure everything is set.)
+5) Save the file with whatever name you desire.
+6) Publish to your desired workspace. (Could be PBI Publish, or Git Push/Deploy, either way)
+
+Optional:
+Open Power Query via the Transform data button, and change the default colors for Fact tables, Dimension tables, and defaults, if desired.
+This only impacts the colors of the nodes on the Table Navigator page.

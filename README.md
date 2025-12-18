@@ -10,13 +10,15 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 Note: If you use the MultiModel_SingleWorkspace or MultiModel_MultiWorkspace versions, you MUST set the option to ignore sensitivity labels.  (Only for this particular documentation model, you do NOT need to disable this across your tenant.)
 
 # Which Files do I Need?
-The easiest way to use the catalog with your own semantic model is to download this Power BI template file: 
+The easiest way to use the catalog with your own semantic model is to download the file(s) that match your situation: 
 There are 3 different files, depending on your situation:
-[SingleModel.pbit](SingleModel.pbit) - this takes paramters for a single workspace, and single model.
-[MultiModel_SingleWorkspace.pbit](MultiModel_SingleWorkspace.pbit) - this takes paramters for a single workspace, and a comma-separates list of models.
-[MultiModel_MultiWorkspace.pbit](MultiModel_MultiWorkspace.pbit) - this requires the user to manually enter a table, that has records for worksapce and model name, one per row.  
+SingleModel - This is the simplest method. It only documents one model. It can be refreshed.
+MultiModel_SingleWorkspace - This allows for documenting multiple models, as long as they reside in a single workspace.  This method cannot be refreshed in the Service, it must be refreshed/republished in Desktop.
+MultiModel_MultiWorkspace - This allows for documenting multiple models, regradelss of what workspaces they are in.  This method cannot be refreshed in the Service, it must be refreshed/republished in Desktop.
+FabricNotebook - This option uses a Fabric noteook and Lakehouse to extract and store the data.  This means that it can be refreshed in the service.  This requires a Fabric-enabled workspace and capacity
 
-Open the template in Power BI Desktop, update workspace(s) and model(s), and you will be in business.
+Each folder has a template file, a notebook (if needed) and an instruction file.  Download the required files for your situation, and follow the directions in the Instructions file.
+
 
 If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
