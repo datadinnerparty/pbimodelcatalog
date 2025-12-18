@@ -1,0 +1,20 @@
+Note, As this is a DirectLake report, there is no need for refresh of the PBI report/model.
+
+Notebook Instructions:
+1) upload the nb_Documentation notebook to your desired workspace.  (Note, it can be renamed, if desired.)
+   Note, the notebook must be in the same workspace as your lakehouse.
+2) Fill in the required options in the first cell (workspace name, lakehouse name, etc.)
+3) Enter 'DirectLake' as the option for model_type
+4) Run the notebook to create and populate the lakehouse. (If the lakehouse already exists, only tables will be added.)
+
+Repot Instructions:
+1) Open the DirectLake template in PBI Desktop.
+2) it will error out on 'cannot load model.'  This is expected.
+3) Click on OneLake Catalog
+4) Choose the DirectLake semantic model that is created by the Notebook. Named by you in the notebook parameters
+6) Make sure the data connects and loads.
+7) Save the report with your desired name.
+8) Publish the report. (Either PBI Publish, or Git Push/Deploy)
+
+OPTIONAL:
+Because this is DirectLake, there is no need to refresh the report or semantic model.  However, you may want to schedule the notebook to run on a aschedule o pick up changes to your models.

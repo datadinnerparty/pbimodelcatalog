@@ -1,0 +1,17 @@
+Note: This template will not allow a scheduled refresh in the PowerBI Service (Due to a limitation in the service)
+You MUST refresh this document in PBI Desktop and republish to pick up updates.
+
+Directions:
+1) Open the pbit template file in PBI Desktop.
+2) Open PowerQuery via the Transform data button.
+3) Find the query called 'Semantic Models'.
+4) Edit the query to contain each workspace and model name that you want to document.  The workspaces do NOT need to be the same, but they DO need to match the model that is in the same row.
+5) Close and Apply power query.
+6) Allow the model to refresh, and pick up all the metadata about your chosen models.
+7) Save the file with your desired name.
+8) Publish the model to your desired workspace (Can be PBI Publish, or Git Push/Deploy)
+
+
+Optional:
+Open Power Query via the Transform data button, and change the default colors for Fact tables, Dimension tables, and defaults, if desired.
+This only impacts the colors of the nodes on the Table Navigator page.
