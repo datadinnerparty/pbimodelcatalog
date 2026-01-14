@@ -1,7 +1,7 @@
 Note, As this is a DirectLake report, there is no need for refresh of the PBI report/model.
 
 Notebook Instructions:
-1) upload the nb_Documentation notebook to your desired workspace.  (Note, it can be renamed, if desired.)
+1) upload the nb_ModelCatalog notebook to your desired workspace.  (Note, it can be renamed, if desired.)
    Note, the notebook must be in the same workspace as your lakehouse.
 2) Fill in the required options in the first cell (workspace name, lakehouse name, etc.)
 3) Enter 'DirectLake' as the option for model_type
