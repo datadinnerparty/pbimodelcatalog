@@ -22,6 +22,10 @@ Each folder has a template file, a notebook (if needed) and an instruction file.
 
 If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
+# Release Notes
+Note: earlier release notes were not captured.  Starting with this release, we'll be adding them in for each release
+3/26/2026 - Removed 2 typos, and one remaining call of the logActivity function, which was removed earlier.
+
 # What does the Model Catalog Do?
 * Queries the metadata of a Power BI model published in a Premium or PPU workspace
 * Provides a templated, parameterized report for quick and easy deployment
