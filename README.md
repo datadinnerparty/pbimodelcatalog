@@ -10,15 +10,8 @@ The purpose is to drive self-service adoption of Power BI models by allowing end
 Note: If you use the MultiModel_SingleWorkspace or MultiModel_MultiWorkspace versions, you MUST set the option to ignore sensitivity labels.  (Only for this particular documentation model, you do NOT need to disable this across your tenant.)
 
 # Which Files do I Need?
-The easiest way to use the catalog with your own semantic model is to download the file(s) that match your situation: 
-There are 3 different files, depending on your situation:
-SingleModel - This is the simplest method. It only documents one model. It can be refreshed.
-MultiModel_SingleWorkspace - This allows for documenting multiple models, as long as they reside in a single workspace.  This method cannot be refreshed in the Service, it must be refreshed/republished in Desktop.
-MultiModel_MultiWorkspace - This allows for documenting multiple models, regradelss of what workspaces they are in.  This method cannot be refreshed in the Service, it must be refreshed/republished in Desktop.
-FabricNotebook - This option uses a Fabric noteook and Lakehouse to extract and store the data.  This means that it can be refreshed in the service.  This requires a Fabric-enabled workspace and capacity
-
-Each folder has a template file, a notebook (if needed) and an instruction file.  Download the required files for your situation, and follow the directions in the Instructions file.
-
+The easiest way to use the catalog with your own semantic model(s) is to download the files in the FabricNotebook folder.
+You'll need the notebook, and the PowerBI template that matches your preferred method, either DirectLake or Import. 
 
 If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
@@ -87,7 +80,10 @@ Alternatively, you can temporarily disable Power BI Desktop's requirement for ap
 ![Security option](/images/securityoption.jpg)
 
 # Refreshing a published Model Catalog
-The SingleModel version of the Model Catalog will only refresh when a schedule has been set up in the service or it is triggered manually or through the API. When setting up a refresh schedule, use oAuth credentials to connect to the data source (the target published model).
-Both of the MultiModel options will not auto refresh (at the current time.)  To refresh them, you must download the file, refresh it locally, and republish.  This is becuase of the way PowerBI validates connections for PowerQuery.
+If you've opted to use DirectLake methodology, then refreshing the model isn't necessary.
+If you've elected to use Import mode, then you can schedule the refresh like any other powerbi report, or add a refresh step in a pipeline.
 
 
+# Release Notes
+I've started adding release notes, to keep track of what's being modified.  Older release notes were not captured, so we are starting now.
+4/20/2026 - Removed older versions of the files, this repo only supports the FabricNotebook option now.  Added in Calculation Group Precedence to the Calculation Items table, to help understand ordering of calculations.
