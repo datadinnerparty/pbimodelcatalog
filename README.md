@@ -15,9 +15,6 @@ You'll need the notebook, and the PowerBI template that matches your preferred m
 
 If you want to contribute to this project, create a branch and pull request here in GitHub (approval required for PR).
 
-# Release Notes
-Note: earlier release notes were not captured.  Starting with this release, we'll be adding them in for each release
-3/26/2026 - Removed 2 typos, and one remaining call of the logActivity function, which was removed earlier.
 
 # What does the Model Catalog Do?
 * Queries the metadata of a Power BI model published in a Premium or PPU workspace
@@ -37,6 +34,7 @@ Note that measure descriptions can now be created with Copilot (preview feature)
 * Tables
 * Partitions, including source queries
 * Measures, including descriptions and DAX expressions
+* Measure Dependencies
 * Columns
 * Hierarchies
 * Relationships
@@ -90,4 +88,10 @@ If you've elected to use Import mode, then you can schedule the refresh like any
 
 # Release Notes
 I've started adding release notes, to keep track of what's being modified.  Older release notes were not captured, so we are starting now.
+
+3/26/2026 - Removed 2 typos, and one remaining call of the logActivity function, which was removed earlier.
+
 4/20/2026 - Removed older versions of the files, this repo only supports the FabricNotebook option now.  Added in Calculation Group Precedence to the Calculation Items table, to help understand ordering of calculations.
+
+5/5/2026 - Added in a whole new page, showing Measure Dependencies.  This shows any additional measurs, tables or columns that a given measure is dependent on.
+
